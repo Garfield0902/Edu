@@ -1,0 +1,109 @@
+﻿/*------------------------------------------------------------
+月子中心管理系统CSS样式表
+徐俊洲 武汉思古科技 2016-06-06
+命名规则:
+    [1] 全局  .pub_作用     如.pub_padding{ padding:30px; }
+    [2] 页面  .页面_作用    如.index_h3Icon{ padding:30px; }
+------------------------------------------------------------*/
+/*ajax加载遮罩层*/
+.masklayer {
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: opacity .3s linear;
+    margin-right:20px;
+}
+
+.masklayer .circle {
+    background-color: rgba(0,0,0,0);
+    border: 5px solid #FFF;
+    opacity: .9;
+    border-right: 5px solid rgba(0,183,229,0.9);
+    border-left: 5px solid rgba(0,183,229,0.9);
+    border-radius: 50px;
+    box-shadow: 0 0 35px #2187e7;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    -moz-animation: spinPulse 1s infinite ease-in-out;
+    -webkit-animation: spinPulse 1s infinite linear;
+}
+
+.masklayer .circle1 {
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,183,229,0.9);
+    opacity: .9;
+    border-left: 5px solid rgba(0,0,0,0);
+    border-right: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 15px #2187e7;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+    -moz-animation: spinoffPulse 1s infinite linear;
+    -webkit-animation: spinoffPulse 1s infinite linear;
+}
+@-moz-keyframes spinPulse {
+    0% {
+        -moz-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #2187e7;
+    }
+    50% {
+        -moz-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes spinoffPulse {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spinPulse {
+    0% {
+        -webkit-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #2187e7;
+    }
+    50% {
+        -webkit-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes spinoffPulse {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.masklayer .content {
+    position: absolute; 
+    top: 50%; left: 50%; 
+    width: 60px; 
+    height: 100px; 
+    margin-top: -50px;
+    margin-left: -25px;
+}

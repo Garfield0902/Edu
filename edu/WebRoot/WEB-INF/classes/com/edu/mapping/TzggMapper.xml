@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.TzggMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Tzgg" >
+    <id column="tzggh" property="tzggh" jdbcType="VARCHAR" />
+    <result column="tzggbt" property="tzggbt" jdbcType="VARCHAR" />
+    <result column="tzggsj" property="tzggsj" jdbcType="TIMESTAMP" />
+    <result column="tzggbz" property="tzggbz" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="record_status" property="recordStatus" jdbcType="INTEGER" />
+    <result column="record_version" property="recordVersion" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.edu.domain.Tzgg" extends="BaseResultMap" >
+    <result column="tzggnr" property="tzggnr" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tzggh, tzggbt, tzggsj, tzggbz, create_at, create_by, update_at, update_by, record_status, 
+    record_version
+  </sql>
+  <sql id="Blob_Column_List" >
+    tzggnr
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from app_tzgg
+    where tzggh = #{tzggh,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from app_tzgg
+    where tzggh = #{tzggh,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Tzgg" >
+    insert into app_tzgg (tzggh, tzggbt, tzggsj, 
+      tzggbz, create_at, create_by, 
+      update_at, update_by, record_status, 
+      record_version, tzggnr)
+    values (#{tzggh,jdbcType=VARCHAR}, #{tzggbt,jdbcType=VARCHAR}, #{tzggsj,jdbcType=TIMESTAMP}, 
+      #{tzggbz,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{recordStatus,jdbcType=INTEGER}, 
+      #{recordVersion,jdbcType=INTEGER}, #{tzggnr,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Tzgg" >
+    insert into app_tzgg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tzggh != null" >
+        tzggh,
+      </if>
+      <if test="tzggbt != null" >
+        tzggbt,
+      </if>
+      <if test="tzggsj != null" >
+        tzggsj,
+      </if>
+      <if test="tzggbz != null" >
+        tzggbz,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="recordStatus != null" >
+        record_status,
+      </if>
+      <if test="recordVersion != null" >
+        record_version,
+      </if>
+      <if test="tzggnr != null" >
+        tzggnr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tzggh != null" >
+        #{tzggh,jdbcType=VARCHAR},
+      </if>
+      <if test="tzggbt != null" >
+        #{tzggbt,jdbcType=VARCHAR},
+      </if>
+      <if test="tzggsj != null" >
+        #{tzggsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tzggbz != null" >
+        #{tzggbz,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        #{recordVersion,jdbcType=INTEGER},
+      </if>
+      <if test="tzggnr != null" >
+        #{tzggnr,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Tzgg" >
+    update app_tzgg
+    <set >
+      <if test="tzggbt != null" >
+        tzggbt = #{tzggbt,jdbcType=VARCHAR},
+      </if>
+      <if test="tzggsj != null" >
+        tzggsj = #{tzggsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tzggbz != null" >
+        tzggbz = #{tzggbz,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        record_status = #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        record_version = #{recordVersion,jdbcType=INTEGER},
+      </if>
+      <if test="tzggnr != null" >
+        tzggnr = #{tzggnr,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where tzggh = #{tzggh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.edu.domain.Tzgg" >
+    update app_tzgg
+    set tzggbt = #{tzggbt,jdbcType=VARCHAR},
+      tzggsj = #{tzggsj,jdbcType=TIMESTAMP},
+      tzggbz = #{tzggbz,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      record_status = #{recordStatus,jdbcType=INTEGER},
+      record_version = #{recordVersion,jdbcType=INTEGER},
+      tzggnr = #{tzggnr,jdbcType=LONGVARBINARY}
+    where tzggh = #{tzggh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Tzgg" >
+    update app_tzgg
+    set tzggbt = #{tzggbt,jdbcType=VARCHAR},
+      tzggsj = #{tzggsj,jdbcType=TIMESTAMP},
+      tzggbz = #{tzggbz,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      record_status = #{recordStatus,jdbcType=INTEGER},
+      record_version = #{recordVersion,jdbcType=INTEGER}
+    where tzggh = #{tzggh,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getAllTzgg" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" />,
+    	<include refid="Blob_Column_List" /> from app_tzgg
+  		limit  #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}  
+  </select>
+  <select id="getAllTzggCount" parameterType="String" resultType="int">
+  		select count(tzggh)  
+      from app_tzgg
+  </select>
+</mapper>

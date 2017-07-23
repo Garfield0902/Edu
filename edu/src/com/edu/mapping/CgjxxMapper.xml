@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.CgjxxMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Cgjxx" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="cgjrq" property="cgjrq" jdbcType="VARCHAR" />
+    <result column="cgjgbdm" property="cgjgbdm" jdbcType="VARCHAR" />
+    <result column="cgjgbmc" property="cgjgbmc" jdbcType="VARCHAR" />
+    <result column="sqdwywmc" property="sqdwywmc" jdbcType="VARCHAR" />
+    <result column="sqdwzwmc" property="sqdwzwmc" jdbcType="VARCHAR" />
+    <result column="tzmc" property="tzmc" jdbcType="VARCHAR" />
+    <result column="cgrw" property="cgrw" jdbcType="VARCHAR" />
+    <result column="xxgzcj" property="xxgzcj" jdbcType="VARCHAR" />
+    <result column="sjhgrjrq" property="sjhgrjrq" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zgh, cgjrq, cgjgbdm, cgjgbmc, sqdwywmc, sqdwzwmc, tzmc, cgrw, xxgzcj, sjhgrjrq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_cgjxx
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_cgjxx
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Cgjxx" >
+    insert into data_cgjxx (id, zgh, cgjrq, 
+      cgjgbdm, cgjgbmc, sqdwywmc, 
+      sqdwzwmc, tzmc, cgrw, 
+      xxgzcj, sjhgrjrq)
+    values (#{id,jdbcType=BIGINT}, #{zgh,jdbcType=VARCHAR}, #{cgjrq,jdbcType=VARCHAR}, 
+      #{cgjgbdm,jdbcType=VARCHAR}, #{cgjgbmc,jdbcType=VARCHAR}, #{sqdwywmc,jdbcType=VARCHAR}, 
+      #{sqdwzwmc,jdbcType=VARCHAR}, #{tzmc,jdbcType=VARCHAR}, #{cgrw,jdbcType=VARCHAR}, 
+      #{xxgzcj,jdbcType=VARCHAR}, #{sjhgrjrq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Cgjxx" >
+    insert into data_cgjxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="cgjrq != null" >
+        cgjrq,
+      </if>
+      <if test="cgjgbdm != null" >
+        cgjgbdm,
+      </if>
+      <if test="cgjgbmc != null" >
+        cgjgbmc,
+      </if>
+      <if test="sqdwywmc != null" >
+        sqdwywmc,
+      </if>
+      <if test="sqdwzwmc != null" >
+        sqdwzwmc,
+      </if>
+      <if test="tzmc != null" >
+        tzmc,
+      </if>
+      <if test="cgrw != null" >
+        cgrw,
+      </if>
+      <if test="xxgzcj != null" >
+        xxgzcj,
+      </if>
+      <if test="sjhgrjrq != null" >
+        sjhgrjrq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjrq != null" >
+        #{cgjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjgbdm != null" >
+        #{cgjgbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjgbmc != null" >
+        #{cgjgbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sqdwywmc != null" >
+        #{sqdwywmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sqdwzwmc != null" >
+        #{sqdwzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="tzmc != null" >
+        #{tzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cgrw != null" >
+        #{cgrw,jdbcType=VARCHAR},
+      </if>
+      <if test="xxgzcj != null" >
+        #{xxgzcj,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhgrjrq != null" >
+        #{sjhgrjrq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Cgjxx" >
+    update data_cgjxx
+    <set >
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjrq != null" >
+        cgjrq = #{cgjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjgbdm != null" >
+        cgjgbdm = #{cgjgbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cgjgbmc != null" >
+        cgjgbmc = #{cgjgbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sqdwywmc != null" >
+        sqdwywmc = #{sqdwywmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sqdwzwmc != null" >
+        sqdwzwmc = #{sqdwzwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="tzmc != null" >
+        tzmc = #{tzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cgrw != null" >
+        cgrw = #{cgrw,jdbcType=VARCHAR},
+      </if>
+      <if test="xxgzcj != null" >
+        xxgzcj = #{xxgzcj,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhgrjrq != null" >
+        sjhgrjrq = #{sjhgrjrq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Cgjxx" >
+    update data_cgjxx
+    set zgh = #{zgh,jdbcType=VARCHAR},
+      cgjrq = #{cgjrq,jdbcType=VARCHAR},
+      cgjgbdm = #{cgjgbdm,jdbcType=VARCHAR},
+      cgjgbmc = #{cgjgbmc,jdbcType=VARCHAR},
+      sqdwywmc = #{sqdwywmc,jdbcType=VARCHAR},
+      sqdwzwmc = #{sqdwzwmc,jdbcType=VARCHAR},
+      tzmc = #{tzmc,jdbcType=VARCHAR},
+      cgrw = #{cgrw,jdbcType=VARCHAR},
+      xxgzcj = #{xxgzcj,jdbcType=VARCHAR},
+      sjhgrjrq = #{sjhgrjrq,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

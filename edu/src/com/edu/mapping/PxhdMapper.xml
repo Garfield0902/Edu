@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.PxhdMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Pxhd" >
+    <id column="hdid" property="hdid" jdbcType="VARCHAR" />
+    <result column="hdzt" property="hdzt" jdbcType="VARCHAR" />
+    <result column="zjr" property="zjr" jdbcType="VARCHAR" />
+    <result column="hdnf" property="hdnf" jdbcType="INTEGER" />
+    <result column="bmjzsj" property="bmjzsj" jdbcType="TIMESTAMP" />
+    <result column="hdsj" property="hdsj" jdbcType="TIMESTAMP" />
+    <result column="hdzzdw" property="hdzzdw" jdbcType="VARCHAR" />
+    <result column="hddd" property="hddd" jdbcType="VARCHAR" />
+    <result column="bmzt" property="bmzt" jdbcType="INTEGER" />
+    <result column="zdcyrs" property="zdcyrs" jdbcType="INTEGER" />
+    <result column="dqcyrs" property="dqcyrs" jdbcType="INTEGER" />
+    <result column="hdpjrs" property="hdpjrs" jdbcType="INTEGER" />
+    <result column="hdjb" property="hdjb" jdbcType="INTEGER" />
+    <result column="hdxf" property="hdxf" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="upate_by" property="upateBy" jdbcType="VARCHAR" />
+    <result column="record_status" property="recordStatus" jdbcType="INTEGER" />
+    <result column="record_version" property="recordVersion" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.edu.domain.Pxhd" extends="BaseResultMap" >
+    <result column="hdnr" property="hdnr" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hdid, hdzt, zjr, hdnf, bmjzsj, hdsj, hdzzdw, hddd, bmzt, zdcyrs, dqcyrs, hdpjrs, 
+    hdjb, hdxf, create_at, create_by, update_at, upate_by, record_status, record_version
+  </sql>
+  <sql id="Blob_Column_List" >
+    hdnr
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from app_pxhd
+    where hdid = #{hdid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from app_pxhd
+    where hdid = #{hdid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Pxhd" >
+    insert into app_pxhd (hdid, hdzt, zjr, 
+      hdnf, bmjzsj, hdsj, 
+      hdzzdw, hddd, bmzt, 
+      zdcyrs, dqcyrs, hdpjrs, 
+      hdjb, hdxf, create_at, 
+      create_by, update_at, upate_by, 
+      record_status, record_version, hdnr
+      )
+    values (#{hdid,jdbcType=VARCHAR}, #{hdzt,jdbcType=VARCHAR}, #{zjr,jdbcType=VARCHAR}, 
+      #{hdnf,jdbcType=INTEGER}, #{bmjzsj,jdbcType=TIMESTAMP}, #{hdsj,jdbcType=TIMESTAMP}, 
+      #{hdzzdw,jdbcType=VARCHAR}, #{hddd,jdbcType=VARCHAR}, #{bmzt,jdbcType=INTEGER}, 
+      #{zdcyrs,jdbcType=INTEGER}, #{dqcyrs,jdbcType=INTEGER}, #{hdpjrs,jdbcType=INTEGER}, 
+      #{hdjb,jdbcType=INTEGER}, #{hdxf,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateAt,jdbcType=TIMESTAMP}, #{upateBy,jdbcType=VARCHAR}, 
+      #{recordStatus,jdbcType=INTEGER}, #{recordVersion,jdbcType=INTEGER}, #{hdnr,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Pxhd" >
+    insert into app_pxhd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hdid != null" >
+        hdid,
+      </if>
+      <if test="hdzt != null" >
+        hdzt,
+      </if>
+      <if test="zjr != null" >
+        zjr,
+      </if>
+      <if test="hdnf != null" >
+        hdnf,
+      </if>
+      <if test="bmjzsj != null" >
+        bmjzsj,
+      </if>
+      <if test="hdsj != null" >
+        hdsj,
+      </if>
+      <if test="hdzzdw != null" >
+        hdzzdw,
+      </if>
+      <if test="hddd != null" >
+        hddd,
+      </if>
+      <if test="bmzt != null" >
+        bmzt,
+      </if>
+      <if test="zdcyrs != null" >
+        zdcyrs,
+      </if>
+      <if test="dqcyrs != null" >
+        dqcyrs,
+      </if>
+      <if test="hdpjrs != null" >
+        hdpjrs,
+      </if>
+      <if test="hdjb != null" >
+        hdjb,
+      </if>
+      <if test="hdxf != null" >
+        hdxf,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="upateBy != null" >
+        upate_by,
+      </if>
+      <if test="recordStatus != null" >
+        record_status,
+      </if>
+      <if test="recordVersion != null" >
+        record_version,
+      </if>
+      <if test="hdnr != null" >
+        hdnr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hdid != null" >
+        #{hdid,jdbcType=VARCHAR},
+      </if>
+      <if test="hdzt != null" >
+        #{hdzt,jdbcType=VARCHAR},
+      </if>
+      <if test="zjr != null" >
+        #{zjr,jdbcType=VARCHAR},
+      </if>
+      <if test="hdnf != null" >
+        #{hdnf,jdbcType=INTEGER},
+      </if>
+      <if test="bmjzsj != null" >
+        #{bmjzsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hdsj != null" >
+        #{hdsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hdzzdw != null" >
+        #{hdzzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="hddd != null" >
+        #{hddd,jdbcType=VARCHAR},
+      </if>
+      <if test="bmzt != null" >
+        #{bmzt,jdbcType=INTEGER},
+      </if>
+      <if test="zdcyrs != null" >
+        #{zdcyrs,jdbcType=INTEGER},
+      </if>
+      <if test="dqcyrs != null" >
+        #{dqcyrs,jdbcType=INTEGER},
+      </if>
+      <if test="hdpjrs != null" >
+        #{hdpjrs,jdbcType=INTEGER},
+      </if>
+      <if test="hdjb != null" >
+        #{hdjb,jdbcType=INTEGER},
+      </if>
+      <if test="hdxf != null" >
+        #{hdxf,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upateBy != null" >
+        #{upateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        #{recordVersion,jdbcType=INTEGER},
+      </if>
+      <if test="hdnr != null" >
+        #{hdnr,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Pxhd" >
+    update app_pxhd
+    <set >
+      <if test="hdzt != null" >
+        hdzt = #{hdzt,jdbcType=VARCHAR},
+      </if>
+      <if test="zjr != null" >
+        zjr = #{zjr,jdbcType=VARCHAR},
+      </if>
+      <if test="hdnf != null" >
+        hdnf = #{hdnf,jdbcType=INTEGER},
+      </if>
+      <if test="bmjzsj != null" >
+        bmjzsj = #{bmjzsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hdsj != null" >
+        hdsj = #{hdsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hdzzdw != null" >
+        hdzzdw = #{hdzzdw,jdbcType=VARCHAR},
+      </if>
+      <if test="hddd != null" >
+        hddd = #{hddd,jdbcType=VARCHAR},
+      </if>
+      <if test="bmzt != null" >
+        bmzt = #{bmzt,jdbcType=INTEGER},
+      </if>
+      <if test="zdcyrs != null" >
+        zdcyrs = #{zdcyrs,jdbcType=INTEGER},
+      </if>
+      <if test="dqcyrs != null" >
+        dqcyrs = #{dqcyrs,jdbcType=INTEGER},
+      </if>
+      <if test="hdpjrs != null" >
+        hdpjrs = #{hdpjrs,jdbcType=INTEGER},
+      </if>
+      <if test="hdjb != null" >
+        hdjb = #{hdjb,jdbcType=INTEGER},
+      </if>
+      <if test="hdxf != null" >
+        hdxf = #{hdxf,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upateBy != null" >
+        upate_by = #{upateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        record_status = #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        record_version = #{recordVersion,jdbcType=INTEGER},
+      </if>
+      <if test="hdnr != null" >
+        hdnr = #{hdnr,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where hdid = #{hdid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.edu.domain.Pxhd" >
+    update app_pxhd
+    set hdzt = #{hdzt,jdbcType=VARCHAR},
+      zjr = #{zjr,jdbcType=VARCHAR},
+      hdnf = #{hdnf,jdbcType=INTEGER},
+      bmjzsj = #{bmjzsj,jdbcType=TIMESTAMP},
+      hdsj = #{hdsj,jdbcType=TIMESTAMP},
+      hdzzdw = #{hdzzdw,jdbcType=VARCHAR},
+      hddd = #{hddd,jdbcType=VARCHAR},
+      bmzt = #{bmzt,jdbcType=INTEGER},
+      zdcyrs = #{zdcyrs,jdbcType=INTEGER},
+      dqcyrs = #{dqcyrs,jdbcType=INTEGER},
+      hdpjrs = #{hdpjrs,jdbcType=INTEGER},
+      hdjb = #{hdjb,jdbcType=INTEGER},
+      hdxf = #{hdxf,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      upate_by = #{upateBy,jdbcType=VARCHAR},
+      record_status = #{recordStatus,jdbcType=INTEGER},
+      record_version = #{recordVersion,jdbcType=INTEGER},
+      hdnr = #{hdnr,jdbcType=LONGVARBINARY}
+    where hdid = #{hdid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Pxhd" >
+    update app_pxhd
+    set hdzt = #{hdzt,jdbcType=VARCHAR},
+      zjr = #{zjr,jdbcType=VARCHAR},
+      hdnf = #{hdnf,jdbcType=INTEGER},
+      bmjzsj = #{bmjzsj,jdbcType=TIMESTAMP},
+      hdsj = #{hdsj,jdbcType=TIMESTAMP},
+      hdzzdw = #{hdzzdw,jdbcType=VARCHAR},
+      hddd = #{hddd,jdbcType=VARCHAR},
+      bmzt = #{bmzt,jdbcType=INTEGER},
+      zdcyrs = #{zdcyrs,jdbcType=INTEGER},
+      dqcyrs = #{dqcyrs,jdbcType=INTEGER},
+      hdpjrs = #{hdpjrs,jdbcType=INTEGER},
+      hdjb = #{hdjb,jdbcType=INTEGER},
+      hdxf = #{hdxf,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      upate_by = #{upateBy,jdbcType=VARCHAR},
+      record_status = #{recordStatus,jdbcType=INTEGER},
+      record_version = #{recordVersion,jdbcType=INTEGER}
+    where hdid = #{hdid,jdbcType=VARCHAR}
+  </update>
+  <select id="getAllPxhd" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" /> from app_pxhd
+  		limit  #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}  
+  </select>
+  <select id="getAllPxhdCount" parameterType="String" resultType="int">
+  		select count(hdid)  
+      from app_pxhd
+  </select>
+</mapper>

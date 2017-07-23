@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.component.dao.SystemLogMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.component.entity.SystemLog" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="logType" property="logtype" jdbcType="INTEGER" />
+    <result column="requestIp" property="requestip" jdbcType="VARCHAR" />
+    <result column="exceptioncode" property="exceptioncode" jdbcType="VARCHAR" />
+    <result column="exceptionDetail" property="exceptiondetail" jdbcType="VARCHAR" />
+    <result column="params" property="params" jdbcType="VARCHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, description, method, logType, requestIp, exceptioncode, exceptionDetail, params, 
+    createBy, createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_logger
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from app_logger
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.component.entity.SystemLog" >
+    insert into app_logger (id, description, method, 
+      logType, requestIp, exceptioncode, 
+      exceptionDetail, params, createBy, 
+      createDate)
+    values (#{id,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{logtype,jdbcType=INTEGER}, #{requestip,jdbcType=VARCHAR}, #{exceptioncode,jdbcType=VARCHAR}, 
+      #{exceptiondetail,jdbcType=VARCHAR}, #{params,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.component.entity.SystemLog" >
+    insert into app_logger
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="logtype != null" >
+        logType,
+      </if>
+      <if test="requestip != null" >
+        requestIp,
+      </if>
+      <if test="exceptioncode != null" >
+        exceptioncode,
+      </if>
+      <if test="exceptiondetail != null" >
+        exceptionDetail,
+      </if>
+      <if test="params != null" >
+        params,
+      </if>
+      <if test="createby != null" >
+        createBy,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        #{logtype,jdbcType=INTEGER},
+      </if>
+      <if test="requestip != null" >
+        #{requestip,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptioncode != null" >
+        #{exceptioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptiondetail != null" >
+        #{exceptiondetail,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.component.entity.SystemLog" >
+    update app_logger
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        logType = #{logtype,jdbcType=INTEGER},
+      </if>
+      <if test="requestip != null" >
+        requestIp = #{requestip,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptioncode != null" >
+        exceptioncode = #{exceptioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptiondetail != null" >
+        exceptionDetail = #{exceptiondetail,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null" >
+        params = #{params,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.component.entity.SystemLog" >
+    update app_logger
+    set description = #{description,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      logType = #{logtype,jdbcType=INTEGER},
+      requestIp = #{requestip,jdbcType=VARCHAR},
+      exceptioncode = #{exceptioncode,jdbcType=VARCHAR},
+      exceptionDetail = #{exceptiondetail,jdbcType=VARCHAR},
+      params = #{params,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

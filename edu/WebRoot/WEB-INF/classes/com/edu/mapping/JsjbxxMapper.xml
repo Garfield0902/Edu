@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.JsjbxxMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Jsjbxx" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="xbm" property="xbm" jdbcType="VARCHAR" />
+    <result column="csrq" property="csrq" jdbcType="VARCHAR" />
+    <result column="sj" property="sj" jdbcType="VARCHAR" />
+    <result column="dzxx" property="dzxx" jdbcType="VARCHAR" />
+    <result column="qqh" property="qqh" jdbcType="VARCHAR" />
+    <result column="xy" property="xy" jdbcType="VARCHAR" />
+    <result column="x" property="x" jdbcType="VARCHAR" />
+    <result column="dwdh" property="dwdh" jdbcType="VARCHAR" />
+    <result column="rxsj" property="rxsj" jdbcType="VARCHAR" />
+    <result column="ltqsrq" property="ltqsrq" jdbcType="VARCHAR" />
+    <result column="xldm" property="xldm" jdbcType="VARCHAR" />
+    <result column="xlmc" property="xlmc" jdbcType="VARCHAR" />
+    <result column="zcmc" property="zcmc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zgh, xm, xbm, csrq, sj, dzxx, qqh, xy, x, dwdh, rxsj, ltqsrq, xldm, xlmc, zcmc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_jsjbxx
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_jsjbxx
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Jsjbxx" >
+    insert into data_jsjbxx (id, zgh, xm, xbm, 
+      csrq, sj, dzxx, qqh, 
+      xy, x, dwdh, rxsj, 
+      ltqsrq, xldm, xlmc, 
+      zcmc)
+    values (#{id,jdbcType=BIGINT}, #{zgh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xbm,jdbcType=VARCHAR}, 
+      #{csrq,jdbcType=VARCHAR}, #{sj,jdbcType=VARCHAR}, #{dzxx,jdbcType=VARCHAR}, #{qqh,jdbcType=VARCHAR}, 
+      #{xy,jdbcType=VARCHAR}, #{x,jdbcType=VARCHAR}, #{dwdh,jdbcType=VARCHAR}, #{rxsj,jdbcType=VARCHAR}, 
+      #{ltqsrq,jdbcType=VARCHAR}, #{xldm,jdbcType=VARCHAR}, #{xlmc,jdbcType=VARCHAR}, 
+      #{zcmc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Jsjbxx" >
+    insert into data_jsjbxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="xbm != null" >
+        xbm,
+      </if>
+      <if test="csrq != null" >
+        csrq,
+      </if>
+      <if test="sj != null" >
+        sj,
+      </if>
+      <if test="dzxx != null" >
+        dzxx,
+      </if>
+      <if test="qqh != null" >
+        qqh,
+      </if>
+      <if test="xy != null" >
+        xy,
+      </if>
+      <if test="x != null" >
+        x,
+      </if>
+      <if test="dwdh != null" >
+        dwdh,
+      </if>
+      <if test="rxsj != null" >
+        rxsj,
+      </if>
+      <if test="ltqsrq != null" >
+        ltqsrq,
+      </if>
+      <if test="xldm != null" >
+        xldm,
+      </if>
+      <if test="xlmc != null" >
+        xlmc,
+      </if>
+      <if test="zcmc != null" >
+        zcmc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xbm != null" >
+        #{xbm,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null" >
+        #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="sj != null" >
+        #{sj,jdbcType=VARCHAR},
+      </if>
+      <if test="dzxx != null" >
+        #{dzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="qqh != null" >
+        #{qqh,jdbcType=VARCHAR},
+      </if>
+      <if test="xy != null" >
+        #{xy,jdbcType=VARCHAR},
+      </if>
+      <if test="x != null" >
+        #{x,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdh != null" >
+        #{dwdh,jdbcType=VARCHAR},
+      </if>
+      <if test="rxsj != null" >
+        #{rxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="ltqsrq != null" >
+        #{ltqsrq,jdbcType=VARCHAR},
+      </if>
+      <if test="xldm != null" >
+        #{xldm,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null" >
+        #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zcmc != null" >
+        #{zcmc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Jsjbxx" >
+    update data_jsjbxx
+    <set >
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xbm != null" >
+        xbm = #{xbm,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null" >
+        csrq = #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="sj != null" >
+        sj = #{sj,jdbcType=VARCHAR},
+      </if>
+      <if test="dzxx != null" >
+        dzxx = #{dzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="qqh != null" >
+        qqh = #{qqh,jdbcType=VARCHAR},
+      </if>
+      <if test="xy != null" >
+        xy = #{xy,jdbcType=VARCHAR},
+      </if>
+      <if test="x != null" >
+        x = #{x,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdh != null" >
+        dwdh = #{dwdh,jdbcType=VARCHAR},
+      </if>
+      <if test="rxsj != null" >
+        rxsj = #{rxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="ltqsrq != null" >
+        ltqsrq = #{ltqsrq,jdbcType=VARCHAR},
+      </if>
+      <if test="xldm != null" >
+        xldm = #{xldm,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null" >
+        xlmc = #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zcmc != null" >
+        zcmc = #{zcmc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Jsjbxx" >
+    update data_jsjbxx
+    set zgh = #{zgh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      xbm = #{xbm,jdbcType=VARCHAR},
+      csrq = #{csrq,jdbcType=VARCHAR},
+      sj = #{sj,jdbcType=VARCHAR},
+      dzxx = #{dzxx,jdbcType=VARCHAR},
+      qqh = #{qqh,jdbcType=VARCHAR},
+      xy = #{xy,jdbcType=VARCHAR},
+      x = #{x,jdbcType=VARCHAR},
+      dwdh = #{dwdh,jdbcType=VARCHAR},
+      rxsj = #{rxsj,jdbcType=VARCHAR},
+      ltqsrq = #{ltqsrq,jdbcType=VARCHAR},
+      xldm = #{xldm,jdbcType=VARCHAR},
+      xlmc = #{xlmc,jdbcType=VARCHAR},
+      zcmc = #{zcmc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getJsjbxxInfo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_jsjbxx
+    where zgh = #{zgh,jdbcType=VARCHAR}
+  </select>
+  
+    <select id="getAllJsjbxx" resultMap="BaseResultMap" parameterType="com.edu.vo.JsjbxxVo" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_jsjbxx
+    where 1=1
+    <if test="zgh != null" >
+        and zgh like '%${zgh}%'
+      </if>
+      <if test="xm != null" >
+        and xm like '%${xm}%'
+      </if>
+      limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getAllJsjbxxCount" parameterType="String" resultType="int">
+  		select count(zgh)  
+      from data_jsjbxx
+      where 1=1
+    <if test="zgh != null" >
+        and zgh like '%${zgh}%'
+      </if>
+      <if test="xm != null" >
+        and xm like '%${xm}%'
+      </if>
+  </select>
+  
+</mapper>

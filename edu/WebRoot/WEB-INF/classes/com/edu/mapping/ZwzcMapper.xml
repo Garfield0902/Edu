@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.ZwzcMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Zwzc" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="zwpddm" property="zwpddm" jdbcType="VARCHAR" />
+    <result column="zwpdmc" property="zwpdmc" jdbcType="VARCHAR" />
+    <result column="zwpdrq" property="zwpdrq" jdbcType="VARCHAR" />
+    <result column="przwdm" property="przwdm" jdbcType="VARCHAR" />
+    <result column="przwmc" property="przwmc" jdbcType="VARCHAR" />
+    <result column="prrq" property="prrq" jdbcType="VARCHAR" />
+    <result column="rzzgmcm" property="rzzgmcm" jdbcType="VARCHAR" />
+    <result column="rzzgmc" property="rzzgmc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zgh, zwpddm, zwpdmc, zwpdrq, przwdm, przwmc, prrq, rzzgmcm, rzzgmc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_zwzc
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_zwzc
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Zwzc" >
+    insert into data_zwzc (id, zgh, zwpddm, 
+      zwpdmc, zwpdrq, przwdm, 
+      przwmc, prrq, rzzgmcm, 
+      rzzgmc)
+    values (#{id,jdbcType=BIGINT}, #{zgh,jdbcType=VARCHAR}, #{zwpddm,jdbcType=VARCHAR}, 
+      #{zwpdmc,jdbcType=VARCHAR}, #{zwpdrq,jdbcType=VARCHAR}, #{przwdm,jdbcType=VARCHAR}, 
+      #{przwmc,jdbcType=VARCHAR}, #{prrq,jdbcType=VARCHAR}, #{rzzgmcm,jdbcType=VARCHAR}, 
+      #{rzzgmc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Zwzc" >
+    insert into data_zwzc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="zwpddm != null" >
+        zwpddm,
+      </if>
+      <if test="zwpdmc != null" >
+        zwpdmc,
+      </if>
+      <if test="zwpdrq != null" >
+        zwpdrq,
+      </if>
+      <if test="przwdm != null" >
+        przwdm,
+      </if>
+      <if test="przwmc != null" >
+        przwmc,
+      </if>
+      <if test="prrq != null" >
+        prrq,
+      </if>
+      <if test="rzzgmcm != null" >
+        rzzgmcm,
+      </if>
+      <if test="rzzgmc != null" >
+        rzzgmc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpddm != null" >
+        #{zwpddm,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpdmc != null" >
+        #{zwpdmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpdrq != null" >
+        #{zwpdrq,jdbcType=VARCHAR},
+      </if>
+      <if test="przwdm != null" >
+        #{przwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="przwmc != null" >
+        #{przwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="prrq != null" >
+        #{prrq,jdbcType=VARCHAR},
+      </if>
+      <if test="rzzgmcm != null" >
+        #{rzzgmcm,jdbcType=VARCHAR},
+      </if>
+      <if test="rzzgmc != null" >
+        #{rzzgmc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Zwzc" >
+    update data_zwzc
+    <set >
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpddm != null" >
+        zwpddm = #{zwpddm,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpdmc != null" >
+        zwpdmc = #{zwpdmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zwpdrq != null" >
+        zwpdrq = #{zwpdrq,jdbcType=VARCHAR},
+      </if>
+      <if test="przwdm != null" >
+        przwdm = #{przwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="przwmc != null" >
+        przwmc = #{przwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="prrq != null" >
+        prrq = #{prrq,jdbcType=VARCHAR},
+      </if>
+      <if test="rzzgmcm != null" >
+        rzzgmcm = #{rzzgmcm,jdbcType=VARCHAR},
+      </if>
+      <if test="rzzgmc != null" >
+        rzzgmc = #{rzzgmc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Zwzc" >
+    update data_zwzc
+    set zgh = #{zgh,jdbcType=VARCHAR},
+      zwpddm = #{zwpddm,jdbcType=VARCHAR},
+      zwpdmc = #{zwpdmc,jdbcType=VARCHAR},
+      zwpdrq = #{zwpdrq,jdbcType=VARCHAR},
+      przwdm = #{przwdm,jdbcType=VARCHAR},
+      przwmc = #{przwmc,jdbcType=VARCHAR},
+      prrq = #{prrq,jdbcType=VARCHAR},
+      rzzgmcm = #{rzzgmcm,jdbcType=VARCHAR},
+      rzzgmc = #{rzzgmc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

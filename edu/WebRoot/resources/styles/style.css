@@ -1,0 +1,23 @@
+.index-panel .panel-heading{
+	background-color: #2d3c4b;
+	color: #FFF;
+	position: relative;
+}
+.index-panel .panel-heading .more-link {
+	position: absolute;
+	top: 14px;
+	right: 10px;
+	color: #FFF;
+}
+.index-panel .panel-heading .more-link:after {
+	content: ">>"
+}
+.paginate-mt {
+	position: relative;
+	top: 4px;
+}
+.paginate-input {
+	width: 30px;
+	text-align: center;
+	margin: 0 4px;
+}

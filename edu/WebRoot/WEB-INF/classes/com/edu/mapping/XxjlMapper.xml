@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.XxjlMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Xxjl" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="byny" property="byny" jdbcType="VARCHAR" />
+    <result column="byyxxhd" property="byyxxhd" jdbcType="VARCHAR" />
+    <result column="sxzy" property="sxzy" jdbcType="VARCHAR" />
+    <result column="xldm" property="xldm" jdbcType="VARCHAR" />
+    <result column="xlmc" property="xlmc" jdbcType="VARCHAR" />
+    <result column="xwdm" property="xwdm" jdbcType="VARCHAR" />
+    <result column="xwmc" property="xwmc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zgh, byny, byyxxhd, sxzy, xldm, xlmc, xwdm, xwmc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_xxjl
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_xxjl
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Xxjl" >
+    insert into data_xxjl (id, zgh, byny, 
+      byyxxhd, sxzy, xldm, 
+      xlmc, xwdm, xwmc)
+    values (#{id,jdbcType=BIGINT}, #{zgh,jdbcType=VARCHAR}, #{byny,jdbcType=VARCHAR}, 
+      #{byyxxhd,jdbcType=VARCHAR}, #{sxzy,jdbcType=VARCHAR}, #{xldm,jdbcType=VARCHAR}, 
+      #{xlmc,jdbcType=VARCHAR}, #{xwdm,jdbcType=VARCHAR}, #{xwmc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Xxjl" >
+    insert into data_xxjl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="byny != null" >
+        byny,
+      </if>
+      <if test="byyxxhd != null" >
+        byyxxhd,
+      </if>
+      <if test="sxzy != null" >
+        sxzy,
+      </if>
+      <if test="xldm != null" >
+        xldm,
+      </if>
+      <if test="xlmc != null" >
+        xlmc,
+      </if>
+      <if test="xwdm != null" >
+        xwdm,
+      </if>
+      <if test="xwmc != null" >
+        xwmc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="byny != null" >
+        #{byny,jdbcType=VARCHAR},
+      </if>
+      <if test="byyxxhd != null" >
+        #{byyxxhd,jdbcType=VARCHAR},
+      </if>
+      <if test="sxzy != null" >
+        #{sxzy,jdbcType=VARCHAR},
+      </if>
+      <if test="xldm != null" >
+        #{xldm,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null" >
+        #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xwdm != null" >
+        #{xwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xwmc != null" >
+        #{xwmc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Xxjl" >
+    update data_xxjl
+    <set >
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="byny != null" >
+        byny = #{byny,jdbcType=VARCHAR},
+      </if>
+      <if test="byyxxhd != null" >
+        byyxxhd = #{byyxxhd,jdbcType=VARCHAR},
+      </if>
+      <if test="sxzy != null" >
+        sxzy = #{sxzy,jdbcType=VARCHAR},
+      </if>
+      <if test="xldm != null" >
+        xldm = #{xldm,jdbcType=VARCHAR},
+      </if>
+      <if test="xlmc != null" >
+        xlmc = #{xlmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xwdm != null" >
+        xwdm = #{xwdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xwmc != null" >
+        xwmc = #{xwmc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Xxjl" >
+    update data_xxjl
+    set zgh = #{zgh,jdbcType=VARCHAR},
+      byny = #{byny,jdbcType=VARCHAR},
+      byyxxhd = #{byyxxhd,jdbcType=VARCHAR},
+      sxzy = #{sxzy,jdbcType=VARCHAR},
+      xldm = #{xldm,jdbcType=VARCHAR},
+      xlmc = #{xlmc,jdbcType=VARCHAR},
+      xwdm = #{xwdm,jdbcType=VARCHAR},
+      xwmc = #{xwmc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

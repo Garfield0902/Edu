@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.GnjxxxMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Gnjxxx" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="jxxzdm" property="jxxzdm" jdbcType="VARCHAR" />
+    <result column="jxxzmc" property="jxxzmc" jdbcType="VARCHAR" />
+    <result column="xxfsdm" property="xxfsdm" jdbcType="VARCHAR" />
+    <result column="xxfsmc" property="xxfsmc" jdbcType="VARCHAR" />
+    <result column="xxqsny" property="xxqsny" jdbcType="VARCHAR" />
+    <result column="xxzzny" property="xxzzny" jdbcType="VARCHAR" />
+    <result column="zxs" property="zxs" jdbcType="DECIMAL" />
+    <result column="xxnr" property="xxnr" jdbcType="VARCHAR" />
+    <result column="jxbmc" property="jxbmc" jdbcType="VARCHAR" />
+    <result column="zbdw" property="zbdw" jdbcType="VARCHAR" />
+    <result column="zbdwxzdm" property="zbdwxzdm" jdbcType="VARCHAR" />
+    <result column="zxdw" property="zxdw" jdbcType="VARCHAR" />
+    <result column="zxdwlbdm" property="zxdwlbdm" jdbcType="VARCHAR" />
+    <result column="jxjgdm" property="jxjgdm" jdbcType="VARCHAR" />
+    <result column="jxjgsm" property="jxjgsm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zgh, jxxzdm, jxxzmc, xxfsdm, xxfsmc, xxqsny, xxzzny, zxs, xxnr, jxbmc, zbdw, 
+    zbdwxzdm, zxdw, zxdwlbdm, jxjgdm, jxjgsm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_gnjxxx
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_gnjxxx
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Gnjxxx" >
+    insert into data_gnjxxx (id, zgh, jxxzdm, 
+      jxxzmc, xxfsdm, xxfsmc, 
+      xxqsny, xxzzny, zxs, 
+      xxnr, jxbmc, zbdw, 
+      zbdwxzdm, zxdw, zxdwlbdm, 
+      jxjgdm, jxjgsm)
+    values (#{id,jdbcType=BIGINT}, #{zgh,jdbcType=VARCHAR}, #{jxxzdm,jdbcType=VARCHAR}, 
+      #{jxxzmc,jdbcType=VARCHAR}, #{xxfsdm,jdbcType=VARCHAR}, #{xxfsmc,jdbcType=VARCHAR}, 
+      #{xxqsny,jdbcType=VARCHAR}, #{xxzzny,jdbcType=VARCHAR}, #{zxs,jdbcType=DECIMAL}, 
+      #{xxnr,jdbcType=VARCHAR}, #{jxbmc,jdbcType=VARCHAR}, #{zbdw,jdbcType=VARCHAR}, 
+      #{zbdwxzdm,jdbcType=VARCHAR}, #{zxdw,jdbcType=VARCHAR}, #{zxdwlbdm,jdbcType=VARCHAR}, 
+      #{jxjgdm,jdbcType=VARCHAR}, #{jxjgsm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Gnjxxx" >
+    insert into data_gnjxxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="jxxzdm != null" >
+        jxxzdm,
+      </if>
+      <if test="jxxzmc != null" >
+        jxxzmc,
+      </if>
+      <if test="xxfsdm != null" >
+        xxfsdm,
+      </if>
+      <if test="xxfsmc != null" >
+        xxfsmc,
+      </if>
+      <if test="xxqsny != null" >
+        xxqsny,
+      </if>
+      <if test="xxzzny != null" >
+        xxzzny,
+      </if>
+      <if test="zxs != null" >
+        zxs,
+      </if>
+      <if test="xxnr != null" >
+        xxnr,
+      </if>
+      <if test="jxbmc != null" >
+        jxbmc,
+      </if>
+      <if test="zbdw != null" >
+        zbdw,
+      </if>
+      <if test="zbdwxzdm != null" >
+        zbdwxzdm,
+      </if>
+      <if test="zxdw != null" >
+        zxdw,
+      </if>
+      <if test="zxdwlbdm != null" >
+        zxdwlbdm,
+      </if>
+      <if test="jxjgdm != null" >
+        jxjgdm,
+      </if>
+      <if test="jxjgsm != null" >
+        jxjgsm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="jxxzdm != null" >
+        #{jxxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxxzmc != null" >
+        #{jxxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfsdm != null" >
+        #{xxfsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfsmc != null" >
+        #{xxfsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxqsny != null" >
+        #{xxqsny,jdbcType=VARCHAR},
+      </if>
+      <if test="xxzzny != null" >
+        #{xxzzny,jdbcType=VARCHAR},
+      </if>
+      <if test="zxs != null" >
+        #{zxs,jdbcType=DECIMAL},
+      </if>
+      <if test="xxnr != null" >
+        #{xxnr,jdbcType=VARCHAR},
+      </if>
+      <if test="jxbmc != null" >
+        #{jxbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zbdw != null" >
+        #{zbdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zbdwxzdm != null" >
+        #{zbdwxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdw != null" >
+        #{zxdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdwlbdm != null" >
+        #{zxdwlbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxjgdm != null" >
+        #{jxjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxjgsm != null" >
+        #{jxjgsm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Gnjxxx" >
+    update data_gnjxxx
+    <set >
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="jxxzdm != null" >
+        jxxzdm = #{jxxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxxzmc != null" >
+        jxxzmc = #{jxxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfsdm != null" >
+        xxfsdm = #{xxfsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxfsmc != null" >
+        xxfsmc = #{xxfsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxqsny != null" >
+        xxqsny = #{xxqsny,jdbcType=VARCHAR},
+      </if>
+      <if test="xxzzny != null" >
+        xxzzny = #{xxzzny,jdbcType=VARCHAR},
+      </if>
+      <if test="zxs != null" >
+        zxs = #{zxs,jdbcType=DECIMAL},
+      </if>
+      <if test="xxnr != null" >
+        xxnr = #{xxnr,jdbcType=VARCHAR},
+      </if>
+      <if test="jxbmc != null" >
+        jxbmc = #{jxbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zbdw != null" >
+        zbdw = #{zbdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zbdwxzdm != null" >
+        zbdwxzdm = #{zbdwxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdw != null" >
+        zxdw = #{zxdw,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdwlbdm != null" >
+        zxdwlbdm = #{zxdwlbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxjgdm != null" >
+        jxjgdm = #{jxjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxjgsm != null" >
+        jxjgsm = #{jxjgsm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Gnjxxx" >
+    update data_gnjxxx
+    set zgh = #{zgh,jdbcType=VARCHAR},
+      jxxzdm = #{jxxzdm,jdbcType=VARCHAR},
+      jxxzmc = #{jxxzmc,jdbcType=VARCHAR},
+      xxfsdm = #{xxfsdm,jdbcType=VARCHAR},
+      xxfsmc = #{xxfsmc,jdbcType=VARCHAR},
+      xxqsny = #{xxqsny,jdbcType=VARCHAR},
+      xxzzny = #{xxzzny,jdbcType=VARCHAR},
+      zxs = #{zxs,jdbcType=DECIMAL},
+      xxnr = #{xxnr,jdbcType=VARCHAR},
+      jxbmc = #{jxbmc,jdbcType=VARCHAR},
+      zbdw = #{zbdw,jdbcType=VARCHAR},
+      zbdwxzdm = #{zbdwxzdm,jdbcType=VARCHAR},
+      zxdw = #{zxdw,jdbcType=VARCHAR},
+      zxdwlbdm = #{zxdwlbdm,jdbcType=VARCHAR},
+      jxjgdm = #{jxjgdm,jdbcType=VARCHAR},
+      jxjgsm = #{jxjgsm,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

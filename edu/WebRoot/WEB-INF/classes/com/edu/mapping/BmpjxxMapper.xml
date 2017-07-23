@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.BmpjxxMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Bmpjxx" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="hdid" property="hdid" jdbcType="VARCHAR" />
+    <result column="xydm" property="xydm" jdbcType="VARCHAR" />
+    <result column="xymc" property="xymc" jdbcType="VARCHAR" />
+    <result column="zgh" property="zgh" jdbcType="VARCHAR" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="bmbz" property="bmbz" jdbcType="INTEGER" />
+    <result column="bmsj" property="bmsj" jdbcType="TIMESTAMP" />
+    <result column="pjbz" property="pjbz" jdbcType="INTEGER" />
+    <result column="pjnf" property="pjnf" jdbcType="INTEGER" />
+    <result column="pjsj" property="pjsj" jdbcType="TIMESTAMP" />
+    <result column="pjfs" property="pjfs" jdbcType="INTEGER" />
+    <result column="lrr" property="lrr" jdbcType="VARCHAR" />
+    <result column="record_status" property="recordStatus" jdbcType="INTEGER" />
+    <result column="record_version" property="recordVersion" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, hdid, xydm, xymc, zgh, xm, bmbz, bmsj, pjbz, pjnf, pjsj, pjfs, lrr, record_status, 
+    record_version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_bmpjxx
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from app_bmpjxx
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Bmpjxx" >
+    insert into app_bmpjxx (id, hdid, xydm, 
+      xymc, zgh, xm, bmbz, 
+      bmsj, pjbz, pjnf, 
+      pjsj, pjfs, lrr, 
+      record_status, record_version)
+    values (#{id,jdbcType=VARCHAR}, #{hdid,jdbcType=VARCHAR}, #{xydm,jdbcType=VARCHAR}, 
+      #{xymc,jdbcType=VARCHAR}, #{zgh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{bmbz,jdbcType=INTEGER}, 
+      #{bmsj,jdbcType=TIMESTAMP}, #{pjbz,jdbcType=INTEGER}, #{pjnf,jdbcType=INTEGER}, 
+      #{pjsj,jdbcType=TIMESTAMP}, #{pjfs,jdbcType=INTEGER}, #{lrr,jdbcType=VARCHAR}, 
+      #{recordStatus,jdbcType=INTEGER}, #{recordVersion,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Bmpjxx" >
+    insert into app_bmpjxx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="hdid != null" >
+        hdid,
+      </if>
+      <if test="xydm != null" >
+        xydm,
+      </if>
+      <if test="xymc != null" >
+        xymc,
+      </if>
+      <if test="zgh != null" >
+        zgh,
+      </if>
+      <if test="xm != null" >
+        xm,
+      </if>
+      <if test="bmbz != null" >
+        bmbz,
+      </if>
+      <if test="bmsj != null" >
+        bmsj,
+      </if>
+      <if test="pjbz != null" >
+        pjbz,
+      </if>
+      <if test="pjnf != null" >
+        pjnf,
+      </if>
+      <if test="pjsj != null" >
+        pjsj,
+      </if>
+      <if test="pjfs != null" >
+        pjfs,
+      </if>
+      <if test="lrr != null" >
+        lrr,
+      </if>
+      <if test="recordStatus != null" >
+        record_status,
+      </if>
+      <if test="recordVersion != null" >
+        record_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="hdid != null" >
+        #{hdid,jdbcType=VARCHAR},
+      </if>
+      <if test="xydm != null" >
+        #{xydm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null" >
+        #{xymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zgh != null" >
+        #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmbz != null" >
+        #{bmbz,jdbcType=INTEGER},
+      </if>
+      <if test="bmsj != null" >
+        #{bmsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pjbz != null" >
+        #{pjbz,jdbcType=INTEGER},
+      </if>
+      <if test="pjnf != null" >
+        #{pjnf,jdbcType=INTEGER},
+      </if>
+      <if test="pjsj != null" >
+        #{pjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pjfs != null" >
+        #{pjfs,jdbcType=INTEGER},
+      </if>
+      <if test="lrr != null" >
+        #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        #{recordVersion,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Bmpjxx" >
+    update app_bmpjxx
+    <set >
+      <if test="hdid != null" >
+        hdid = #{hdid,jdbcType=VARCHAR},
+      </if>
+      <if test="xydm != null" >
+        xydm = #{xydm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null" >
+        xymc = #{xymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zgh != null" >
+        zgh = #{zgh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="bmbz != null" >
+        bmbz = #{bmbz,jdbcType=INTEGER},
+      </if>
+      <if test="bmsj != null" >
+        bmsj = #{bmsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pjbz != null" >
+        pjbz = #{pjbz,jdbcType=INTEGER},
+      </if>
+      <if test="pjnf != null" >
+        pjnf = #{pjnf,jdbcType=INTEGER},
+      </if>
+      <if test="pjsj != null" >
+        pjsj = #{pjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pjfs != null" >
+        pjfs = #{pjfs,jdbcType=INTEGER},
+      </if>
+      <if test="lrr != null" >
+        lrr = #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="recordStatus != null" >
+        record_status = #{recordStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recordVersion != null" >
+        record_version = #{recordVersion,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Bmpjxx" >
+    update app_bmpjxx
+    set hdid = #{hdid,jdbcType=VARCHAR},
+      xydm = #{xydm,jdbcType=VARCHAR},
+      xymc = #{xymc,jdbcType=VARCHAR},
+      zgh = #{zgh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      bmbz = #{bmbz,jdbcType=INTEGER},
+      bmsj = #{bmsj,jdbcType=TIMESTAMP},
+      pjbz = #{pjbz,jdbcType=INTEGER},
+      pjnf = #{pjnf,jdbcType=INTEGER},
+      pjsj = #{pjsj,jdbcType=TIMESTAMP},
+      pjfs = #{pjfs,jdbcType=INTEGER},
+      lrr = #{lrr,jdbcType=VARCHAR},
+      record_status = #{recordStatus,jdbcType=INTEGER},
+      record_version = #{recordVersion,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getAllBmpjxx" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" /> from app_bmpjxx
+  		limit  #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}  
+  </select>
+  <select id="getAllBmpjxxCount" parameterType="String" resultType="int">
+  		select count(id)  
+      from app_bmpjxx
+  </select>
+</mapper>
