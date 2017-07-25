@@ -1,5 +1,12 @@
 package com.edu.service;
 
-public interface BmpjxxService {
+import java.util.List;
 
+import com.edu.vo.BmpjxxVo;
+import com.edu.vo.PxhddaVo;
+
+public interface BmpjxxService {
+	List<PxhddaVo> getAllJsjbxx(BmpjxxVo bv);
+
+	int getAllJsjbxxCount(BmpjxxVo bv);
 }

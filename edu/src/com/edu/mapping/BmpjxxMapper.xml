@@ -215,4 +215,66 @@
   		select count(id)  
       from app_bmpjxx
   </select>
+  
+  <select id="getAllJsjbxx" resultType="com.edu.vo.PxhddaVo" parameterType="com.edu.vo.BmpjxxVo">
+  		select p.hdzt,p.hdnf,p.hdsj,p.hdzzdw,p.hdxf,p.hdsj,a.zgh ,dz.rzzgmcm
+		from app_bmpjxx a left join app_pxhd p on a.hdid=p.hdid
+						  left join data_zwzc dz on a.zgh=dz.zgh 
+  		where 1=1 
+  		<if test="searchType == 'nd'">
+  			<if test="pjnf != null" >
+  				and p.hdnf=#{pjnf}
+  			</if>
+  		</if>
+  		<if test="searchType == 'qj'">
+  			<if test="time_start != null and time_start != ''" >
+  				<![CDATA[
+  					and p.hdsj >= '${time_start}'
+  				]]>
+  			</if>
+  			
+  			<if test="time_end != null and time_end != ''" >
+  				<![CDATA[
+  					and p.hdsj <= '${time_end}'
+  				 ]]>
+  			</if>
+  		</if>
+  		<if test="searchType == 'nd'">
+  			<if test="rzzgmcm != null" >
+  				and dz.rzzgmcm=#{rzzgmcm}
+  			</if>
+  		</if>
+  		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllJsjbxxCount" resultType="java.lang.Integer" parameterType="com.edu.vo.BmpjxxVo">
+  		select count(a.zgh)
+		from app_bmpjxx a left join app_pxhd p on a.hdid=p.hdid
+						  left join data_zwzc dz on a.zgh=dz.zgh 
+  		where 1=1 
+  		<if test="searchType == 'nd'">
+  			<if test="pjnf != null" >
+  				and p.hdnf=#{pjnf}
+  			</if>
+  		</if>
+  		<if test="searchType == 'qj'">
+  			<if test="time_start != null and time_start != ''" >
+  				<![CDATA[
+  					and p.hdsj >= '${time_start}'
+  				]]>
+  			</if>
+  			
+  			<if test="time_end != null and time_end != ''" >
+  				<![CDATA[
+  					and p.hdsj <= '${time_end}'
+  				 ]]>
+  			</if>
+  		</if>
+  		<if test="searchType == 'nd'">
+  			<if test="rzzgmcm != null" >
+  				and dz.rzzgmcm=#{rzzgmcm}
+  			</if>
+  		</if>
+  </select>
+  
+  
 </mapper>

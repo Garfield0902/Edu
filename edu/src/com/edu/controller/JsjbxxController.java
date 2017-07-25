@@ -2,6 +2,8 @@ package com.edu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -30,10 +32,18 @@ public class JsjbxxController {
 	
 	@ResponseBody
 	@RequestMapping(value="/getJsjbxxInfo.do",method = RequestMethod.POST,consumes="application/json")
-	public GeneVo getJsjbxxInfo(JsjbxxVo js){
+	public GeneVo getJsjbxxInfo(JsjbxxVo js,HttpServletRequest req){
 		logger.debug("当前用户信息");
-		js.setZgh("11");
+
 		final GeneVo<Jsjbxx> gv = new GeneVo<Jsjbxx>();
+		String zgh = (String)req.getSession().getAttribute("zgh");
+		
+		if(StringUtils.isEmpty(zgh)){
+			gv.setMsg("当前用户职工号为空，查看失败！");
+			gv.setCode("400");
+			return gv;
+		}
+		js.setZgh(zgh);
 		boolean flag =getInfoValidateVo(gv,js);
 		if(!flag){
 			return gv;
@@ -57,8 +67,11 @@ public class JsjbxxController {
 	public GenePageVo getAllJsjbxx(@RequestBody  JsjbxxVo js){
 		logger.debug("查询所有用户！");
 		final GenePageVo<Jsjbxx> gv = new GenePageVo<Jsjbxx>();
+		int count = service.getAlljsjbxxCount(js);
+		js.setTotalCount(count);
 		Pagination p = new Pagination();
 		BeanUtils.copyProperties(js, p);
+		
 		List<Jsjbxx> list= service.getAllJsjbxx(js);
 		gv.setList(list);
 		gv.setPage(p);

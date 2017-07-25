@@ -1,7 +1,6 @@
 var Announcement = function(){  
     this.init = function(){  
         $('#inquireBtn').unbind('click').bind('click', function() {  
-//            $('#pageNo').val(1);// 每次查询都默认为打开第一页  
             announcement.settingQuery();  
         });  
     };  
@@ -9,19 +8,8 @@ var Announcement = function(){
     this.settingQuery = function(){  
         $('#pageBar').html('');
         $('#dataList').html("");
-        
-        var url = 'jsjbxx/getAllJsjbxx.do';
+        var url = 'bmpjxx/allArchives.do';
         var obj = announcement.acquireInquireData();
-    	var zgh = $("#zgh").val();
-    	var xm = $("#xm").val();
-    	
-    	obj["kaptcha"] = 1;
-    	if(zgh && zgh.length>0){
-    		obj["zgh"] = zgh.trim();
-    	}
-    	if(xm && xm.length>0){
-    		obj["xm"] = xm.trim();
-    	}
         
         $.ajax({
             type: 'post',  
@@ -33,15 +21,31 @@ var Announcement = function(){
             traditional:true,//这使json格式的字符不会被转码
             success: function (result) {
                 announcement.callback(result);  
-            }  
-        });  
-      
+            }
+        });
     };  
+    
     this.acquireInquireData = function(){ 
         var data = {
         		pageSize:parseInt($('#pageSize').val()),  
                 pageNo : $('#pageNo').val()
         };  
+        var searchType = $("input[name='searchType']:checked").val();
+        data.searchType=searchType;
+        if(searchType=='nd'){
+        	var pjnf = $("select[name=pjnf]").val();
+        	data.pjnf=pjnf;
+        }
+		if(searchType=='qj'){
+			var time_start = $("input[name=time_start]").val();
+			var time_end = $("input[name=time_end]").val();
+			data.time_start=time_start;
+			data.time_end=time_end;
+		}
+		if(searchType=='zw'){
+			var rzzgmcm= $("select[name=rzzgmcm]").val();
+			data.rzzgmcm=rzzgmcm;
+		}
         return data;  
     };
   
@@ -52,35 +56,27 @@ var Announcement = function(){
     	$('body').append($(pageNoInput)).append($(pageSizeInput));
         var xHtml = '';  
         var list = showData.list;
-        if (list.length == 0) {  
+        if (!list||list.length == 0) {  
             xHtml += '<tr><td colspan="2">没有数据</td></tr>';  
             $('#dataList').html(xHtml);  
         } else {  
             for (var i = 0; i < list.length; i++) {  
-            	var zgh = list[i].zgh;
-            	var xm = list[i].xm;
-            	var xy = list[i].xy;
+            	var hdnf = list[i].hdnf;
+            	var hdzt = list[i].hdzt;
+            	var hdsj = list[i].hdsj;
+            	var hdzzdw = list[i].hdzzdw;
+            	var hdxf = list[i].hdxf;
             	
             	xHtml += '<tr><td>'+ i +'</td>'+
-		        '<td>'+ zgh +'</td>'+
-		        '<td>'+ xm +'</td>'+
-		        '<td>'+ xy +'</td>'+
-		        '<td> <a href="javascript:;" flag="tjxf_" zgh="'+zgh+'" xm="'+xm+'" xy="'+xy+'" data-toggle="modal" data-target="#tianjiaxuefen">添加学分</a> &nbsp;&nbsp;<a href="javascript:;" flag="_showda_" zgh="'+zgh+'" xm="'+xm+'" xy="'+xy+'">培训档案</a> </td>'+
+		        '<td>'+ hdnf +'</td>'+
+		        '<td>'+ hdzt +'</td>'+
+		        '<td>'+ new Date(hdsj).toLocaleString() +'</td>'+
+		        '<td>'+ hdzzdw +'</td>'+
+		        '<td>null</td>'+
+		        '<td>'+hdxf+'</td>'+
 		        '</tr>';
             }
             $('#dataList').html(xHtml);
-            
-            // 给添加学分添加事件
-            $("a[flag='tjxf_']").each(function(){
-            	$(this).click(function(){
-            		var zgh =$(this).attr("zgh");
-            		var xm =$(this).attr("xm");
-            		var xy =$(this).attr("xy");
-            		$("#tjxf_xm").val(zgh);
-            		$("#tjxf_zgh").val(xm);
-            		$("#tjxf_xy").val(xy);
-            	});
-            })
             
             var pageBarStr = pageBar.pageInit(showData.page.totalPage, showData.page.pageNo,showData.page.totalCount, announcement.clickPage,announcement.setPageSize);
             $('.search-footer').html(pageBarStr);
@@ -98,30 +94,16 @@ var Announcement = function(){
     }
 };
 
-function tjxfSubmit(){
-	var E = window.wangEditor
-	var editor = new E('#tjxf_hdnr')
-	editor.create()
-	
-	$('#tjxf_save').click(function(){
-//		alert(editor.txt.html());
-		$("#_hdnr_").val(editor.txt.html());
-		$('#_tjxf_').submit();
-	});
-}
-
-
 var announcement;
 $(function(){
     announcement = new Announcement();
     announcement.init();
     //默认显示查询结果  
     announcement.settingQuery();
-    $('#search').click(search);
-    $('#datetimepicker').datetimepicker();
-    $('.datetimepicker').css('width','300px');
-    tjxfSubmit();
-
+    $("#search").click(search);
+    $('#time_start').datetimepicker();
+    $('#time_end').datetimepicker();
+    $('.datetimepicker').css('width','500px');
 });
 
 function search(){

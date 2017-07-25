@@ -88,6 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script type="text/javascript" src="resources/js/fuedit.js"></script>
-	<script type="text/javascript" src="<%=basePath%>/resources/js/teachermanage.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resources/js/myinfo.js"></script>
 </body>
 </html>

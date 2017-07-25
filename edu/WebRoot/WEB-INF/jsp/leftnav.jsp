@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="">
+                                <a href="<%= basePath %>bmpjxx/archives.do">
                                     <span class="menu-title" data-lang="main_customer_title">培训档案</span>
                                 </a>
                             </li>

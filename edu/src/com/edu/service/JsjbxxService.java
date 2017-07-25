@@ -20,9 +20,16 @@ public interface JsjbxxService {
 	 */
 	List<Jsjbxx> getAllJsjbxx(JsjbxxVo js);
 	/**
+	 * 查询所有教师信息总数
+	 * @param js
+	 * @return
+	 */
+	int getAlljsjbxxCount(JsjbxxVo js);
+	/**
 	 * 教师添加学分
 	 * @param js
 	 */
 	void addJsxf(TjxfVo js);
+	
 
 }
