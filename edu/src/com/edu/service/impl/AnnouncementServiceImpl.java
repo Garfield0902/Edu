@@ -23,7 +23,6 @@ public class AnnouncementServiceImpl implements AnnouncementServiceI{
         }  
         Integer rows = tzggMapper.getAllTzggCount();  
         announcementVo.getPage().setTotalCount(rows);  
-        Pagination page = announcementVo.getPage();  
         List<Tzgg> list = tzggMapper.getAllTzgg(announcementVo);
         return list;  
     } 

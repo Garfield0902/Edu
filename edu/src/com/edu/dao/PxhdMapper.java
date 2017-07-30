@@ -3,7 +3,7 @@ package com.edu.dao;
 import java.util.List;
 
 import com.edu.domain.Pxhd;
-import com.edu.vo.TrainingInfoAnnouncementVo;
+import com.edu.vo.PxhdVo;
 
 public interface PxhdMapper {
     int deleteByPrimaryKey(String hdid);
@@ -20,7 +20,8 @@ public interface PxhdMapper {
 
     int updateByPrimaryKey(Pxhd record);
 
-	Integer getAllPxhdCount();
+	Integer getAllPxhdCount(PxhdVo pxhdVo);
 
-	List<Pxhd> getAllPxhd(TrainingInfoAnnouncementVo trainingInfoAnnouncementVo);
+	List<Pxhd> getAllPxhd(PxhdVo pxhdVo);
+	
 }

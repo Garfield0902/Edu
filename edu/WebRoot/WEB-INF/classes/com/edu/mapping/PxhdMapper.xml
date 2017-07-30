@@ -311,10 +311,38 @@
   </update>
   <select id="getAllPxhd" resultMap="BaseResultMap">
   		select <include refid="Base_Column_List" /> from app_pxhd
-  		limit  #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}  
+  		where 1=1
+    <if test="hdzt != null" >
+        and hdzt like '%${hdzt}%'
+      </if>
+      <if test="startDate != null" >
+      <![CDATA[ 
+        and bmjzsj > '${startDate}'
+        ]]>	
+      </if>
+      <if test="endDate != null" >
+      	<![CDATA[ 
+        and bmjzsj < '${endDate}'
+         ]]>	
+      </if>
+  		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}  
   </select>
   <select id="getAllPxhdCount" parameterType="String" resultType="int">
   		select count(hdid)  
       from app_pxhd
+      where 1=1
+    <if test="hdzt != null" >
+        and hdzt like '%${hdzt}%'
+      </if>
+      <if test="startDate != null" >
+      <![CDATA[ 
+        and bmjzsj > '${startDate}'
+        ]]>	
+      </if>
+      <if test="endDate != null" >
+      	<![CDATA[ 
+        and bmjzsj < '${endDate}'
+         ]]>	
+      </if>
   </select>
 </mapper>

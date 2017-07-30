@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.edu.domain.Bmpjxx;
 import com.edu.vo.BmpjxxVo;
+import com.edu.vo.PxhdVo;
 import com.edu.vo.PxhddaVo;
-import com.edu.vo.SignUpVo;
 
 public interface BmpjxxMapper {
     int deleteByPrimaryKey(String id);
@@ -20,10 +20,12 @@ public interface BmpjxxMapper {
 
     int updateByPrimaryKey(Bmpjxx record);
 
-	List<Bmpjxx> getAllBmpjxx(SignUpVo signUpVo);
+	List<Bmpjxx> getAllBmpjxx(PxhdVo pxhdVo);
 
-	//查询教师档案
+	//��ѯ��ʦ����
 	List<PxhddaVo> getAllJsjbxx(BmpjxxVo bv);
+	
+	List<Bmpjxx> getAllBmById(BmpjxxVo bv);
 
 	int getAllJsjbxxCount(BmpjxxVo bv);
 }

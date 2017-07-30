@@ -1,5 +1,6 @@
 package com.edu.domain;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 public class Pxhd {
@@ -44,8 +45,18 @@ public class Pxhd {
     private Integer recordVersion;
 
     private byte[] hdnr;
+    
+    private String nr;
 
-    public String getHdid() {
+    public String getNr() {
+		return nr;
+	}
+
+	public void setNr(String nr) {
+		this.nr = nr;
+	}
+
+	public String getHdid() {
         return hdid;
     }
 
@@ -211,5 +222,10 @@ public class Pxhd {
 
     public void setHdnr(byte[] hdnr) {
         this.hdnr = hdnr;
+        try {
+			this.nr = new String(hdnr,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
     }
 }

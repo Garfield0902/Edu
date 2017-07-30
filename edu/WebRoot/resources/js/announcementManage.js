@@ -68,8 +68,9 @@ var AnnouncementManage = function(){
             $('#dataList').html(xHtml);  
         } else {  
         	for (var i = 0; i < list.length; i++) {  
+        		var din = list[i].tzggbz === 1 ? '[置顶]' : '';
                 xHtml += '<tr>';  
-                xHtml += '<td>'+ list[i].tzggbt + '</td>';  
+                xHtml += '<td>'+din+ list[i].tzggbt + '</td>';  
                 xHtml += '<td width="20%">'+ new Date(list[i].createAt).toLocaleString() + '</td>';
                 xHtml += '<td width="20%"><a id="modify" data-id="'+ list[i].tzggh +'" href="javascript:;">修改</a>&nbsp;<a data-id="'+ list[i].tzggh +'" id="deleteBtn" href="javascript:;">删除</a></td>';
                 xHtml += '</tr>';
@@ -118,6 +119,11 @@ var AnnouncementManage = function(){
             success: function (result) {
     			$('#tzggbt').val(result.tzggbt);
     			editor.txt.html(result.nr);
+    			if(result.tzggbz === 1){
+    				$('[name="tzggbz"]').prop('checked',true);
+    			}else{
+    				$('[name="tzggbz"]').prop('checked',false);
+    			}
             }  
         });
     }

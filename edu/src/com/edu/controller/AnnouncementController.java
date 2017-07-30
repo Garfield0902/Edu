@@ -59,6 +59,7 @@ public class AnnouncementController {
 			tzgg.setCreateBy("");
 			result = announcement.insert(tzgg);
 		}else{
+			tzgg.setUpdateAt(new Date());
 			result = announcement.updateByPrimaryKeySelective(tzgg);
 		}
 		if(result==1){

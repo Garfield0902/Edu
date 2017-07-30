@@ -12,7 +12,14 @@ $(function(){
 		$('#mainnav-menu').find('li a').removeClass('active');
 		$(this).find('a').addClass('active');
 	});
-	$('#selectAll').on('click',function(){
-		$("input[name='checkbox']").attr("checked",this.checked);
+	var url = location.pathname;
+	$('#mainnav-menu .menu-item a').each(function(i,k){
+		var href = $(this).attr('href');
+		if(href.indexOf(url) > 0){
+			$(this).parent().addClass('active');
+			if(!$(this).parent().hasClass('menu-item')){
+				$(this).parents('ul').siblings('a').trigger('click');
+			}
+		}
 	})
 })

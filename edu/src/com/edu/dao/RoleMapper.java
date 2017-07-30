@@ -1,6 +1,9 @@
 package com.edu.dao;
 
+import java.util.List;
+
 import com.edu.domain.Role;
+import com.edu.vo.RoleVo;
 
 public interface RoleMapper {
     int deleteByPrimaryKey(String id);
@@ -14,4 +17,8 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+    
+    Integer getAllRoleCount(RoleVo roleVo);
+
+	List<Role> getAllRole(RoleVo roleVo);
 }

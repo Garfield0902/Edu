@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.dao.BmpjxxMapper;
+import com.edu.domain.Bmpjxx;
 import com.edu.service.BmpjxxService;
 import com.edu.vo.BmpjxxVo;
 import com.edu.vo.PxhddaVo;
@@ -24,5 +25,12 @@ public class BmpjxxServiceImpl implements BmpjxxService{
 	@Override
 	public int getAllJsjbxxCount(BmpjxxVo bv) {
 		return bmmper.getAllJsjbxxCount(bv);
+	}
+	public int deleteByPrimaryKey(String id){
+		return bmmper.deleteByPrimaryKey(id);
+	}
+	@Override
+	public List<Bmpjxx> getAllBmById(BmpjxxVo bv) {
+		return bmmper.getAllBmById(bv);
 	}
 }

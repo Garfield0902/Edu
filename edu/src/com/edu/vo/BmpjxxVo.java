@@ -33,13 +33,13 @@ public class BmpjxxVo  extends Pagination{
 
     private Integer recordVersion;
     
-    //æœç´¢ç±»å‹
+    //ËÑË÷ÀàĞÍ
     private String searchType;
     
     private String time_start;
     private String time_end;
     
-    //ä»»èŒèµ„æ ¼åç§°ç 
+    //ÈÎÖ°×Ê¸ñÃû³ÆÂë
     private String rzzgmcm;
     
     public String getId() {

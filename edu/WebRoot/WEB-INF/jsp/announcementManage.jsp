@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" id="addAnnouncementBtn" class="btn btn-success">保存</button>
-                  <button type="button" class="btn btn-default">取消</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
               </div>
             </form>
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </div>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
-	<script type="text/javascript" src="https://unpkg.com/wangeditor@3.0.4/release/wangEditor.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resources/js/fuedit.js"></script>
 	<script type="text/javascript" src="<%=basePath%>/resources/js/announcementManage.js"></script>
 </body>
 </html>

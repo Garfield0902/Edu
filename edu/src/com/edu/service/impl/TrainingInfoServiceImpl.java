@@ -11,8 +11,8 @@ import com.edu.domain.Bmpjxx;
 import com.edu.domain.Pxhd;
 import com.edu.service.TrainingInfoServiceI;
 import com.edu.vo.Pagination;
+import com.edu.vo.PxhdVo;
 import com.edu.vo.SignUpVo;
-import com.edu.vo.TrainingInfoAnnouncementVo;
 
 @Service("TrainingInfoService")
 public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
@@ -22,28 +22,21 @@ public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
 	@Autowired
 	private BmpjxxMapper bmpjxxMapper;
 
-	public List<Pxhd> getAllPxhd(TrainingInfoAnnouncementVo trainingInfoAnnouncementVo){  
-        if (trainingInfoAnnouncementVo.getPage() == null) {  
-        	trainingInfoAnnouncementVo.setPage(new Pagination());  
-        }  
-        Integer rows = pxhdMapper.getAllPxhdCount(); 
-        trainingInfoAnnouncementVo.getPage().setTotalCount(rows);  
-        Pagination page = trainingInfoAnnouncementVo.getPage();  
-        List<Pxhd> list = pxhdMapper.getAllPxhd(trainingInfoAnnouncementVo);
+	public int getAllPxhdCount(PxhdVo pxhdVo){  
+		return pxhdMapper.getAllPxhdCount(pxhdVo);
+    }
+	public List<Pxhd> getAllPxhd(PxhdVo pxhdVo){  
+		Integer count = pxhdMapper.getAllPxhdCount(pxhdVo);
+		pxhdVo.setTotalCount(count);
+        List<Pxhd> list = pxhdMapper.getAllPxhd(pxhdVo);
         return list;
     }
 
 	public int signUp(Bmpjxx record) {
 		return bmpjxxMapper.insert(record);
 	}
-	public List<Bmpjxx> getAllBm(SignUpVo signUpVo){
-		if (signUpVo.getPage() == null) {
-			signUpVo.setPage(new Pagination());  
-        }  
-//        Integer rows = pxhdMapper.getAllPxhdCount(); 
-//        signUpVo.getPage().setTotalCount(rows);  
-        Pagination page = signUpVo.getPage();  
-        List<Bmpjxx> list = bmpjxxMapper.getAllBmpjxx(signUpVo);
+	public List<Bmpjxx> getAllBm(PxhdVo pxhdVo){
+        List<Bmpjxx> list = bmpjxxMapper.getAllBmpjxx(pxhdVo);
         return list;
 	}
 
@@ -51,5 +44,28 @@ public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
 	public int cancelSignUp(String id) {
 		// TODO Auto-generated method stub
 		return bmpjxxMapper.deleteByPrimaryKey(id);
+	}
+	@Override
+	public int delete(String id) {
+		// TODO Auto-generated method stub
+		return pxhdMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int insert(Pxhd pxhd) {
+		// TODO Auto-generated method stub
+		return pxhdMapper.insert(pxhd);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(Pxhd pxhd) {
+		// TODO Auto-generated method stub
+		return pxhdMapper.updateByPrimaryKeySelective(pxhd);
+	}
+	
+	@Override
+	public Pxhd selectByPrimaryKey(String hdid) {
+		// TODO Auto-generated method stub
+		return pxhdMapper.selectByPrimaryKey(hdid);
 	}
 }

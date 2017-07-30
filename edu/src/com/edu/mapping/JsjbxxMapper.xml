@@ -239,8 +239,8 @@
       limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
   
-  <select id="getAllJsjbxxCount" parameterType="String" resultType="int">
-  		select count(zgh)  
+  <select id="getAllJsjbxxCount" parameterType="com.edu.vo.JsjbxxVo" resultType="java.lang.Integer">
+  		select count(zgh)
       from data_jsjbxx
       where 1=1
     <if test="zgh != null" >

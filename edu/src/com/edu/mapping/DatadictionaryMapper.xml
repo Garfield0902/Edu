@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.dao.DatadictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.edu.domain.Datadictionary" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="orderData" property="orderData" jdbcType="INTEGER" />
+    <result column="des" property="des" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, value, orderData, des
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_datadictionary
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_datadictionary
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.edu.domain.Datadictionary" >
+    insert into sys_datadictionary (id, type, value, 
+      orderData, des)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{orderData,jdbcType=INTEGER}, #{des,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.edu.domain.Datadictionary" >
+    insert into sys_datadictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="orderData != null" >
+        orderData,
+      </if>
+      <if test="des != null" >
+        des,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="orderData != null" >
+        #{orderData,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        #{des,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Datadictionary" >
+    update sys_datadictionary
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="orderData != null" >
+        orderData = #{orderData,jdbcType=INTEGER},
+      </if>
+      <if test="des != null" >
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Datadictionary" >
+    update sys_datadictionary
+    set type = #{type,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      orderData = #{orderData,jdbcType=INTEGER},
+      des = #{des,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getAllDataDictionary" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" /> from sys_datadictionary
+      where 1=1
+    <if test="type != null" >
+        and type = '${type}'
+      </if>
+      limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}  
+  </select>
+  <select id="getAllDataDictionaryCount" parameterType="String" resultType="int">
+      select count(id)  
+      from sys_datadictionary
+      where 1=1
+    <if test="type != null" >
+        and type = '${type}'
+      </if>
+  </select>
+</mapper>

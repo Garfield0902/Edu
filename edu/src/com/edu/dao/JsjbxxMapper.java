@@ -30,5 +30,5 @@ public interface JsjbxxMapper {
 	 */
 	List<Jsjbxx> getAllJsjbxx(JsjbxxVo js);
 
-	int getAlljsjbxxCount(JsjbxxVo js);
+	int getAllJsjbxxCount(JsjbxxVo js);
 }

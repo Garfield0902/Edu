@@ -1,71 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.edu.dao.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.edu.domain.Role" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, name, desc
+<mapper namespace="com.edu.dao.RoleMapper">
+	<resultMap id="BaseResultMap" type="com.edu.domain.Role">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="desc" property="desc" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, desc
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from app_role
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from app_role
-    where id = #{id,jdbcType=VARCHAR}
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from app_role
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from app_role
+		where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.edu.domain.Role" >
-    insert into app_role (id, name, desc
-      )
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
-      )
+	<insert id="insert" parameterType="com.edu.domain.Role">
+		insert into app_role (id, name, desc
+		)
+		values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{desc,jdbcType=VARCHAR}
+		)
   </insert>
-  <insert id="insertSelective" parameterType="com.edu.domain.Role" >
-    insert into app_role
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+	<insert id="insertSelective" parameterType="com.edu.domain.Role">
+		insert into app_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
       </if>
-      <if test="name != null" >
-        name,
+			<if test="name != null">
+				name,
       </if>
-      <if test="desc != null" >
-        desc,
+			<if test="desc != null">
+				desc,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+			<if test="desc != null">
+				#{desc,jdbcType=VARCHAR},
       </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Role" >
-    update app_role
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.edu.domain.Role">
+		update app_role
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+			<if test="desc != null">
+				desc = #{desc,jdbcType=VARCHAR},
       </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.edu.domain.Role">
+		update app_role
+		set name = #{name,jdbcType=VARCHAR},
+		desc = #{desc,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.edu.domain.Role" >
-    update app_role
-    set name = #{name,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+  <select id="getAllRole" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" /> from app_role 
+  		limit #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllRoleCount" parameterType="String" resultType="int">
+  		select count(id)  
+      from app_role
+  </select>
 </mapper>

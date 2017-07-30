@@ -1,5 +1,8 @@
 var TrainingInfo = function(){
-    this.init = function(){  
+    this.init = function(){ 
+    	if(window.location.search.indexOf('?') >= 0){
+    		$('.nav-tabs li:eq(1) a').trigger('click');
+    	}
     	$(document).on('click','.signUp',function(){
         	var url = 'trainingInfo/signUp.do';  
         	var id = $(this).attr('data-hdid');
@@ -53,6 +56,7 @@ var TrainingInfo = function(){
         $('#pageBar').html('');  
         var url = 'trainingInfo/getAllPxhd.do';  
         var inquireData = trainingInfo.acquireInquireData();  
+        console.log(inquireData)
         $.ajax({
             type: 'post',  
             async: true,  
@@ -91,7 +95,7 @@ var TrainingInfo = function(){
                 var status = list[i].recordStatus === 1 ? '报名中' : '未报名';
                 xHtml += '<tr><td>'+ i +'</td>'+
 		        '<td>'+ list[i].hdzt +'</td>'+
-		        '<td>'+ new Date(list[i].bmsj).toLocaleString() +'</td>'+
+		        '<td>'+ new Date(list[i].bmjzsj).toLocaleString() +'</td>'+
 		        '<td>'+ new Date(list[i].hdsj).toLocaleString() +'</td>'+
 		        '<td>'+ list[i].hddd +'</td>'+
 		        '<td>'+ list[i].hdzzdw +'</td>'+

@@ -72,11 +72,7 @@ public class LoginController {
 	        
 	        session = request.getSession(true);
 	        session.setAttribute("userName", user.getName());
-	        
-	        //测试代码，必删
-	        session.setAttribute("zgh", "11");
-	        
-	        
+//	        session.setAttribute("zgh", "admin");
 		}catch (IncorrectCredentialsException e1) {
 			mav.addObject("msg", "用户名或密码错误!");
 			mav.setViewName("redirect:/login.jsp");

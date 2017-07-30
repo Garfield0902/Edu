@@ -1,5 +1,5 @@
 var Announcement = function(){  
-    this.init = function(){  
+    this.init = function(){
         $('#inquireBtn').unbind('click').bind('click', function() {  
 //            $('#pageNo').val(1);// 每次查询都默认为打开第一页  
             announcement.settingQuery();  

@@ -30,6 +30,5 @@ public interface JsjbxxService {
 	 * @param js
 	 */
 	void addJsxf(TjxfVo js);
-	
 
 }

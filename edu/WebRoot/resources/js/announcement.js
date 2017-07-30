@@ -4,6 +4,11 @@ var Announcement = function(){
 //            $('#pageNo').val(1);// 每次查询都默认为打开第一页  
             announcement.settingQuery();  
         });  
+        
+        $(document).on('click','.announcementContentLink',function(){
+        	$('#announcementContent').modal();
+        	announcement.selectAnnouncementById($(this).attr('id'));
+        });
     };  
     //根据查询条件查询  
     this.settingQuery = function(){  
@@ -44,8 +49,9 @@ var Announcement = function(){
             $('#dataList').html(xHtml);  
         } else {  
             for (var i = 0; i < list.length; i++) {  
+            	var din = list[i].tzggbz === 1 ? '[置顶]' : '';
                 xHtml += '<tr>';  
-                xHtml += '<td><a href="javascript:;" data-toggle="modal" data-target="#announcementContent">'+ list[i].tzggbt + '</a></td>';  
+                xHtml += '<td>'+din+'<a id="'+ list[i].tzggh +'" href="javascript:;" class="announcementContentLink">'+ list[i].tzggbt + '</a></td>';  
                 xHtml += '<td width="20%">'+ new Date(list[i].createAt).toLocaleString() + '</td>';  
                 xHtml += '</tr>';
                 $('#announcementContentModalLabel').text(list[i].tzggbt);
@@ -54,6 +60,7 @@ var Announcement = function(){
             $('#dataList').html(xHtml);  
             var pageBarStr = pageBar.pageInit(showData.page.totalPage, showData.page.pageNo,showData.page.totalCount, announcement.clickPage,announcement.setPageSize);
             $('.search-footer').html(pageBarStr);
+            $('#pageSizeSelect option[value="'+$('#pageSize').val()+'"]').attr("selected", true);
         }
     };  
       
@@ -64,6 +71,21 @@ var Announcement = function(){
     this.setPageSize = function(pageSize){
     	$('#pageSize').val(pageSize);
     	announcement.settingQuery();
+    }
+    this.selectAnnouncementById = function(id){
+    	$.ajax({
+            type: 'post',  
+            async: true,  
+            url: 'announcement/selectAnnouncementById.do',  
+            data: id,
+            contentType:'application/json;charset=UTF-8',//关键是要加上这行
+            traditional:true,//这使json格式的字符不会被转码
+            success: function (result) {
+    			$('#announcementContentModalText').html(result.nr);
+    			$('#announcementContentModalLabel').text(result.tzggbt);
+    			//editor.txt.html(result.nr);
+            }  
+        });
     }
 };  
 var announcement;  

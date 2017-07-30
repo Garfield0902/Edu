@@ -60,10 +60,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div class="modal fade" id="announcementContent" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
+	    <div class="modal-content modal-lg">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-	        <h4 class="modal-title" id="announcementContentModalLabel">提示</h4>
+	        <h4 class="modal-title" id="announcementContentModalLabel"></h4>
 	      </div>
 	      <div class="modal-body">
 	        <div id="announcementContentModalText"></div>
