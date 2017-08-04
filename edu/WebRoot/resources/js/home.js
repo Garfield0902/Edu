@@ -5,6 +5,7 @@ var Home = function(){
     	home.getTrainingInfo();
     	home.getBmInfo();
     	home.trainarchives();
+    	home.announcement();
     };  
     this.getPersonInfo = function(){
     	$.ajax({
@@ -50,12 +51,15 @@ var Home = function(){
         });  
     }
     this.getBmInfo = function(){
-    	 var url = 'trainingInfo/getAllBm.do';  
+    	 var url = 'bmpjxx/getBmListByzgh.do';  
+    	 var data = {};
+    	 data.pageSize=5;
+    	 data.pageNo=1;
          $.ajax({
              type: 'post',  
              async: true,  
              url: url,  
-             data: JSON.stringify({pageSize: 5, pageNo: 1}),
+             data: JSON.stringify(data),
              dataType: "JSON",
              contentType:'application/json;charset=UTF-8',//关键是要加上这行
              traditional:true,//这使json格式的字符不会被转码
@@ -73,11 +77,16 @@ var Home = function(){
     }
     this.trainarchives = function(){
     	var url = 'bmpjxx/allArchives.do';
+    	var data = {};
+    	data.searchType='nd';
+	   	data.hdnf= (new Date()).getFullYear();
+	   	data.pageSize=5;
+	   	data.pageNo=1;
         $.ajax({
             type: 'post',  
             async: true,  
             url: url,  
-            data: JSON.stringify({pageSize: 5, pageNo: 1}),
+            data: JSON.stringify(data),
             dataType: "JSON",
             contentType:'application/json;charset=UTF-8',//关键是要加上这行
             traditional:true,//这使json格式的字符不会被转码
@@ -98,7 +107,7 @@ var Home = function(){
             }
         });
     }
-    this.trainarchives = function(){
+    this.announcement = function(){
     	var url = 'announcement/getAllTzgg.do';  
         $.ajax({
             type: 'post',  
@@ -127,6 +136,4 @@ $(function(){
       
     home = new Home();  
     home.init();  
-    //默认显示查询结果  
-    
 });

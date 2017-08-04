@@ -2,7 +2,10 @@ package com.edu.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.edu.domain.Pxhd;
+import com.edu.vo.BmpjxxVo;
 import com.edu.vo.PxhdVo;
 
 public interface PxhdMapper {
@@ -23,5 +26,9 @@ public interface PxhdMapper {
 	Integer getAllPxhdCount(PxhdVo pxhdVo);
 
 	List<Pxhd> getAllPxhd(PxhdVo pxhdVo);
+
+	List<Pxhd> getAllPxhdNoPage(PxhdVo pxhdVo);
+
+	Object insertTrainingInfoBach(List<Object> vals);
 	
 }

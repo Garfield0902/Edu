@@ -62,7 +62,7 @@ var ActivityManagement = function(){
         	$('#view').modal();
         });
         $(document).on('click','#bmSearch',function(){
-        	$('#activityBm').submit();
+        	activityManagement.selectBMById();
         });
         $(document).on('click','#bmConfirmDelete',function(){
         	activityManagement.deleteBmPeople();
@@ -205,12 +205,12 @@ var ActivityManagement = function(){
     }
     this.selectBMById = function(id){
     	var inquireData = activityManagement.bmAcquireInquireData();
-    	inquireData.zgh = $('#modalZgh').val();
+    	inquireData.zgh = $('#modalZgh').val() === '' ? null : $('#modalZgh').val();
     	inquireData.hdid = id;
     	$.ajax({
             type: 'post',  
             async: true,  
-            url: 'trainingInfo/getBmById.do',  
+            url: 'bmpjxx/getBmListByHdid.do',  
             data: JSON.stringify(inquireData),
             contentType:'application/json;charset=UTF-8',//关键是要加上这行
             traditional:true,//这使json格式的字符不会被转码

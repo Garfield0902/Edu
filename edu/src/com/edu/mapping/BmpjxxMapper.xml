@@ -209,21 +209,35 @@
   </update>
   <select id="getAllBmpjxx" resultMap="BaseResultMap">
   		select <include refid="Base_Column_List" /> from app_bmpjxx
-  		limit  #{page.startRow,jdbcType=INTEGER},#{page.pageSize,jdbcType=INTEGER}  
+  		where 1=1 
+  		<if test="hdid != null" >
+			and hdid=#{hdid}
+		</if>
+		<if test="zgh != null" >
+			and zgh=#{zgh}
+		</if>
+  		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
   <select id="getAllBmpjxxCount" parameterType="String" resultType="int">
   		select count(id)  
       from app_bmpjxx
+      where 1=1 
+  		<if test="hdid != null" >
+			and hdid=#{hdid}
+		</if>
+		<if test="zgh != null" >
+			and zgh=#{zgh}
+		</if>
   </select>
   
   <select id="getAllJsjbxx" resultType="com.edu.vo.PxhddaVo" parameterType="com.edu.vo.BmpjxxVo">
-  		select p.hdzt,p.hdnf,p.hdsj,p.hdzzdw,p.hdxf,p.hdsj,a.zgh ,dz.rzzgmcm
+  		select p.hdzt,p.hdnf,p.hdsj,p.hdzzdw,p.hdxf,p.hdsj,p.hddd,a.zgh ,dz.rzzgmcm,a.zgh,a.id
 		from app_bmpjxx a left join app_pxhd p on a.hdid=p.hdid
 						  left join data_zwzc dz on a.zgh=dz.zgh 
   		where 1=1 
   		<if test="searchType == 'nd'">
-  			<if test="pjnf != null" >
-  				and p.hdnf=#{pjnf}
+  			<if test="hdnf != null" >
+  				and p.hdnf=#{hdnf}
   			</if>
   		</if>
   		<if test="searchType == 'qj'">
@@ -243,6 +257,9 @@
   			<if test="rzzgmcm != null" >
   				and dz.rzzgmcm=#{rzzgmcm}
   			</if>
+  		</if>
+  		<if test="zgh != null">
+  			and a.zgh=#{zgh}
   		</if>
   		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
@@ -252,8 +269,8 @@
 						  left join data_zwzc dz on a.zgh=dz.zgh 
   		where 1=1 
   		<if test="searchType == 'nd'">
-  			<if test="pjnf != null" >
-  				and p.hdnf=#{pjnf}
+  			<if test="hdnf != null" >
+  				and p.hdnf=#{hdnf}
   			</if>
   		</if>
   		<if test="searchType == 'qj'">
@@ -274,5 +291,53 @@
   				and dz.rzzgmcm=#{rzzgmcm}
   			</if>
   		</if>
+  		<if test="zgh != null">
+  			and a.zgh=#{zgh}
+  		</if>
+  </select>
+  <select id="getAllEvaluationManagement" resultType="com.edu.vo.EvaluationManagementVo" parameterType="com.edu.vo.PxhdVo">
+  		select a.id,p.hdid,p.hdnf,p.hdzt,p.bmjzsj,p.hdsj,p.hddd,p.zjr,p.hdzzdw,p.zdcyrs,p.hdjb,p.record_status,p.hdxf
+		from app_bmpjxx a left join app_pxhd p on a.hdid=p.hdid
+  		where 1=1 
+		<if test="startDate != null" >
+			<![CDATA[
+				and p.hdsj > #{startDate}
+			]]>
+		</if>
+		<if test="endDate != null" >
+			<![CDATA[
+				and p.hdsj < #{endDate}
+			]]>
+		</if>
+  		<if test="hdzt != null" >
+			and p.hdzt=#{hdzt}
+		</if>
+  		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllEvaluationManagementCount" resultType="java.lang.Integer" parameterType="com.edu.vo.BmpjxxVo">
+  		select count(a.id)
+		from app_bmpjxx a left join app_pxhd p on a.hdid=p.hdid
+  		where 1=1 
+  		<if test="startDate != null" >
+			<![CDATA[
+				and p.hdsj > #{startDate}
+			]]>
+		</if>
+		<if test="endDate != null" >
+			<![CDATA[
+				and p.hdsj < #{endDate}
+			]]>
+		</if>
+		<if test="hdzt != null" >
+			and p.hdzt=#{hdzt}
+		</if>
+  </select>
+  
+  <select id="getPxhdByZgh" resultType="com.edu.vo.BmpjxxVo">
+  		select <include refid="Base_Column_List" /> from app_bmpjxx
+  		where 1=1
+    <if test="zgh != null" >
+        and zgh = '${zgh}'
+      </if>
   </select>
 </mapper>

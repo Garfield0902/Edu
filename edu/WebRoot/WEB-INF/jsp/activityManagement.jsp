@@ -20,12 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="panel">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<span>活动管理</span>
+								<span>活动管理  <input id="basePath_" type="hidden" value="<%=basePath %>" /></span>
 							</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<form name="table_head" class="form-inline">
 				                    <div class="col-xs-7" name="search_item">
 				                        <div class="form-group">
 				                            <input type="text" id="startDate" class="form-control" placeholder="起始日期">
@@ -43,10 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                        <button type="button" class="btn btn-info" id="modify">修改</button>
 				                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#delete">删除</button>
 				                        
-				                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#import">导入</button>
-				                        <button type="button" class="btn btn-info" id="export">导出</button>
+				                        <form action="<%=basePath%>trainingInfo/importTrainingInfo.do" method="post" enctype ="multipart/form-data">
+									  		<input id="upfile" type="file" name="upfile">
+									  		<input name="submit" type="submit" value="导入" >
+									  	</form>
+				                        <a href="<%=basePath %>trainingInfo/exportTrainingInfo.do"><button type="button" class="btn btn-info" id="export">导出</button></a>
 				                    </div>
-				                </form>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">

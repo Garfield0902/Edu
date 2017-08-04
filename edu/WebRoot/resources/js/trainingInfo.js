@@ -4,7 +4,7 @@ var TrainingInfo = function(){
     		$('.nav-tabs li:eq(1) a').trigger('click');
     	}
     	$(document).on('click','.signUp',function(){
-        	var url = 'trainingInfo/signUp.do';  
+        	var url = 'bmpjxx/add.do';  
         	var id = $(this).attr('data-hdid');
             var inquireData = trainingInfo.acquireInquireData();  
             $.ajax({
@@ -28,7 +28,7 @@ var TrainingInfo = function(){
             });
         });
     	$(document).on('click','.cancelSignUp',function(){
-        	var url = 'trainingInfo/cancelSignUp.do';  
+        	var url = 'bmpjxx/delete.do';  
         	var id = $(this).attr('data-id');
             var inquireData = trainingInfo.acquireInquireData();  
             $.ajax({
@@ -91,9 +91,7 @@ var TrainingInfo = function(){
             $('#dataList').html(xHtml);  
         } else {  
             for (var i = 0; i < list.length; i++) {  
-                detailId = i;  
-                var status = list[i].recordStatus === 1 ? '报名中' : '未报名';
-                xHtml += '<tr><td>'+ i +'</td>'+
+                xHtml += '<tr><td>'+ (i+1) +'</td>'+
 		        '<td>'+ list[i].hdzt +'</td>'+
 		        '<td>'+ new Date(list[i].bmjzsj).toLocaleString() +'</td>'+
 		        '<td>'+ new Date(list[i].hdsj).toLocaleString() +'</td>'+
@@ -102,11 +100,12 @@ var TrainingInfo = function(){
 		        '<td>'+ list[i].zdcyrs +'</td>'+
 		        '<td>'+ list[i].pjbz +'</td>'+
 		        '<td>'+ status +'</td>'
-		        if(list[i].recordStatus === 0){
-		        	xHtml += '<td><a data-hdid="'+list[i].hdid+'" class="link signUp" href="javascript:;">报名</a></td>';
-		        }else{
-		        	xHtml += '<td></td>';
-		        }
+		        var bmzt = list[i].bmzt;
+                if(bmzt === 1){
+                	xHtml += '<td>已报名</td>';
+                }else{
+                	xHtml += '<td><a data-hdid="'+list[i].hdid+'" class="link signUp" href="javascript:;">报名</a></td>';
+                }
                 xHtml += '</tr>';
             }  
             $('#dataList').html(xHtml);  
@@ -128,8 +127,9 @@ var TrainingInfo = function(){
   //根据查询条件查询  
     this.settingQueryBm = function(){  
         $('#pageBarBm').html('');  
-        var url = 'trainingInfo/getAllBm.do';  
-        var inquireData = trainingInfo.acquireInquireDataBm();  
+        var url = 'bmpjxx/getBmListByzgh.do';  
+        var inquireData = trainingInfo.acquireInquireDataBm();
+        inquireData.zgh = '11';
         $.ajax({
             type: 'post',  
             async: true,  
@@ -161,14 +161,13 @@ var TrainingInfo = function(){
             $('#dataListBm').html(xHtml);  
         } else {  
             for (var i = 0; i < list.length; i++) {  
-                detailId = i;  
-                xHtml += '<tr><td>'+ i +'</td>'+
+                xHtml += '<tr><td>'+ (i+1) +'</td>'+
 		        '<td>'+ list[i].hdzt +'</td>'+
-		        '<td>'+ list[i].bmjzsj +'</td>'+
-		        '<td>'+ list[i].hdsj +'</td>'+
+		        '<td>'+ new Date(list[i].hdsj).toLocaleString() +'</td>'+
 		        '<td>'+ list[i].hddd +'</td>'+
 		        '<td>'+ list[i].hdzzdw +'</td>'+
 		        '<td>'+ list[i].zdcyrs +'</td>'+
+		        '<td>'+ list[i].hdlx +'</td>'+
 		        '<td><a data-id="'+list[i].id+'" class="link cancelSignUp" href="javascript:;">取消报名</a></td>'
                 xHtml += '</tr>';
             }  
@@ -185,6 +184,22 @@ var TrainingInfo = function(){
     this.setPageSizeBm = function(pageSize){
     	$('#pageSizeBm').val(pageSize);
         trainingInfo.settingQueryBm();
+    }
+    this.getBmStatusByHdid= function(id){
+    	var url = 'bmpjxx/getBmStatusByHdid.do';  
+        var inquireData = trainingInfo.acquireInquireDataBm();
+        $.ajax({
+            type: 'post',  
+            async: true,  
+            url: url,  
+            data: id,
+            dataType: "JSON",
+            contentType:'application/json;charset=UTF-8',//关键是要加上这行
+            traditional:true,//这使json格式的字符不会被转码
+            success: function (result) {
+                return result;
+            }  
+        });
     }
 };  
 var trainingInfo;  

@@ -150,4 +150,20 @@
       createDate = #{createdate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="getSystemLog" resultMap="BaseResultMap">
+  		select <include refid="Base_Column_List" /> from app_logger
+  		 where 1=1
+		<if test="logtype != null" >
+        and logtype = '${logtype}'
+      </if>
+      limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER} 
+  </select>
+  <select id="getAllSystemLogCount" parameterType="String" resultType="int">
+  		select count(id)  
+      from app_logger
+      where 1=1
+      <if test="logtype != null" >
+        and logtype = '${logtype}'
+      </if>
+  </select>
 </mapper>

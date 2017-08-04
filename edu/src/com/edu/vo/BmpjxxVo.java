@@ -22,8 +22,10 @@ public class BmpjxxVo  extends Pagination{
     private Integer pjbz;
 
     private Integer pjnf;
+    
+    private Integer hdnf;
 
-    private Date pjsj;
+	private Date pjsj;
 
     private Integer pjfs;
 
@@ -33,13 +35,13 @@ public class BmpjxxVo  extends Pagination{
 
     private Integer recordVersion;
     
-    //ËÑË÷ÀàÐÍ
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private String searchType;
     
     private String time_start;
     private String time_end;
     
-    //ÈÎÖ°×Ê¸ñÃû³ÆÂë
+    //ï¿½ï¿½Ö°ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private String rzzgmcm;
     
     public String getId() {
@@ -194,6 +196,13 @@ public class BmpjxxVo  extends Pagination{
 		this.rzzgmcm = rzzgmcm;
 	}
 
+    public Integer getHdnf() {
+		return hdnf;
+	}
+
+	public void setHdnf(Integer hdnf) {
+		this.hdnf = hdnf;
+	}
 	@Override
 	public String toString() {
 		return "Bmpjxx [id=" + id + ", hdid=" + hdid + ", xydm=" + xydm

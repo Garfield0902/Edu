@@ -11,6 +11,8 @@ import com.edu.dao.BmpjxxMapper;
 import com.edu.domain.Bmpjxx;
 import com.edu.service.BmpjxxService;
 import com.edu.vo.BmpjxxVo;
+import com.edu.vo.EvaluationManagementVo;
+import com.edu.vo.PxhdVo;
 import com.edu.vo.PxhddaVo;
 @Service
 public class BmpjxxServiceImpl implements BmpjxxService{
@@ -26,11 +28,29 @@ public class BmpjxxServiceImpl implements BmpjxxService{
 	public int getAllJsjbxxCount(BmpjxxVo bv) {
 		return bmmper.getAllJsjbxxCount(bv);
 	}
+	
+	@Override
+	public int insertSelective(Bmpjxx bmpjxx) {
+		return bmmper.insertSelective(bmpjxx);
+	}
+	
 	public int deleteByPrimaryKey(String id){
 		return bmmper.deleteByPrimaryKey(id);
 	}
 	@Override
-	public List<Bmpjxx> getAllBmById(BmpjxxVo bv) {
-		return bmmper.getAllBmById(bv);
+	public List<Bmpjxx> getAllBmpjxx(BmpjxxVo bv) {
+		return bmmper.getAllBmpjxx(bv);
+	}
+	public int getAllBmByIdCount(BmpjxxVo bv) {
+		return bmmper.getAllBmpjxxCount(bv);
+	}
+	
+	@Override
+	public List<EvaluationManagementVo> getAllEvaluationManagement(PxhdVo pxhdVo) {
+		return bmmper.getAllEvaluationManagement(pxhdVo);
+	}
+	@Override
+	public int getAllEvaluationManagementCount(PxhdVo pxhdVo) {
+		return bmmper.getAllEvaluationManagementCount(pxhdVo);
 	}
 }

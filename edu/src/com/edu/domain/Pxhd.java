@@ -1,6 +1,7 @@
 package com.edu.domain;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Pxhd {
@@ -228,4 +229,18 @@ public class Pxhd {
 			e.printStackTrace();
 		}
     }
+
+	@Override
+	public String toString() {
+		return "Pxhd [hdid=" + hdid + ", hdzt=" + hdzt + ", zjr=" + zjr
+				+ ", hdnf=" + hdnf + ", bmjzsj=" + bmjzsj + ", hdsj=" + hdsj
+				+ ", hdzzdw=" + hdzzdw + ", hddd=" + hddd + ", bmzt=" + bmzt
+				+ ", zdcyrs=" + zdcyrs + ", dqcyrs=" + dqcyrs + ", hdpjrs="
+				+ hdpjrs + ", hdjb=" + hdjb + ", hdxf=" + hdxf + ", createAt="
+				+ createAt + ", createBy=" + createBy + ", updateAt="
+				+ updateAt + ", upateBy=" + upateBy + ", recordStatus="
+				+ recordStatus + ", recordVersion=" + recordVersion + ", hdnr="
+				+ Arrays.toString(hdnr) + ", nr=" + nr + "]";
+	}
+    
 }

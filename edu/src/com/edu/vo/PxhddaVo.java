@@ -3,6 +3,7 @@ package com.edu.vo;
 import java.util.Date;
 
 public class PxhddaVo {
+	private String id;
 	private String hdzt;
 	private Integer hdnf;
 	private String hdzzdw;
@@ -10,7 +11,14 @@ public class PxhddaVo {
 	private Date hdsj;
 	private String rzzgmcm;
 	private String zgh;
+	private String hddd;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getHdzt() {
 		return hdzt;
 	}
@@ -52,6 +60,13 @@ public class PxhddaVo {
 	}
 	public void setZgh(String zgh) {
 		this.zgh = zgh;
+	}
+	
+	public String getHddd() {
+		return hddd;
+	}
+	public void setHddd(String hddd) {
+		this.hddd = hddd;
 	}
 	@Override
 	public String toString() {

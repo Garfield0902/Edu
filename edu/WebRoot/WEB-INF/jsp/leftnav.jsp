@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </a>
                                 <ul class="collapse">
                                     <li><a href="<%= basePath %>trainingInfo/activityManagementPage.do">活动管理</a></li>
-                                    <li><a href="yonghuguanli.html">报名管理</a></li>
+                                    <li><a href="<%= basePath %>bmpjxx/evaluationManagementPage.do">评价管理</a></li>
                                     <li><a href="<%= basePath %>jsjbxx/getAllJsjbxxPage.do">教师管理</a></li>
                                 </ul>
                             </li>
@@ -65,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <li><a href="yonghuguanli.html">用户管理</a></li>
                                     <li><a href="<%= basePath %>roleManagement/roleManagementPage.do">角色管理</a></li>
                                     <li><a href="<%= basePath %>dataDictionary/dataDictionaryPage.do">数据字典</a></li>
-                                    <li><a href="caozuorizhi.html">操作日志</a></li>
-                                    <li><a href="caozuorizhi.html">备份管理</a></li>
+                                    <li><a href="<%= basePath %>systemLog/systemLogPage.do">操作日志</a></li>
+                                    <li><a href="<%= basePath %>backupManagement/backupManagementPage.do">备份管理</a></li>
                                     <li><a href="<%= basePath %>systemInfoPage.do">系统信息</a></li>
                                 </ul>
                             </li>
