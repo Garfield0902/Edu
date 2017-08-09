@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <form name="table_head" class="form-inline">
                     <div class="col-xs-8" name="search_item">
                         <div class="form-group">
-                            <select class="form-control" name="pjnf">
+                            <select class="form-control" name="hdnf">
                             	<option value="-1">年度</option>
                             	<option value="2016">2016</option>
                             	<option value="2017">2017</option>

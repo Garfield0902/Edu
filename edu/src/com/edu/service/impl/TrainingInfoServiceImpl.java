@@ -60,6 +60,11 @@ public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
 	public int signUp(Bmpjxx record) {
 		return bmpjxxMapper.insert(record);
 	}
+	
+/*	public List<Bmpjxx> getAllBm(PxhdVo pxhdVo){
+        List<Bmpjxx> list = bmpjxxMapper.getAllBmpjxx(pxhdVo);
+        return list;
+	}*/
 
 	@Override
 	public int cancelSignUp(String id) {
@@ -86,45 +91,44 @@ public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
 	
 	@Override
 	public Pxhd selectByPrimaryKey(String hdid) {
-		// TODO Auto-generated method stub
 		return pxhdMapper.selectByPrimaryKey(hdid);
 	}
 	@Override
 	public Workbook getexcelData(List<Pxhd> list) throws Exception {
 		LinkedHashMap<SheetDesc, List<?>> map=new LinkedHashMap<SheetDesc, List<?>>();
-		//´´½¨sheetÃèÊö
+		//åˆ›å»ºsheetæè¿°
 		SheetDesc desc=new SheetDesc();
-		//ÉèÖÃµ¥¸ösheetµÄ±íÍ·Ãû³Æ
-		desc.setTitle("ÅàÑµĞÅÏ¢ÁĞ±í");
-		//ÉèÖÃsheetµÄÃû³Æ
-		desc.setSheetName("ÅàÑµĞÅÏ¢");
+		//è®¾ç½®å•ä¸ªsheetçš„è¡¨å¤´åç§°
+		desc.setTitle("åŸ¹è®­ä¿¡æ¯åˆ—è¡¨");
+		//è®¾ç½®sheetçš„åç§°
+		desc.setSheetName("åŸ¹è®­ä¿¡æ¯");
 		
-		FiledDescription  hdid=new FiledDescription("»î¶¯id:hdid","hdid");
-		FiledDescription  hdzt=new FiledDescription("»î¶¯Ö÷Ìâ:hdzt","hdzt");
-		FiledDescription  zjr=new FiledDescription("Ö÷½²ÈË:zjr","zjr");
-		FiledDescription  hdnf=new FiledDescription("»î¶¯Äê·İ:hdnf","hdnf");
+		FiledDescription  hdid=new FiledDescription("æ´»åŠ¨id:hdid","hdid");
+		FiledDescription  hdzt=new FiledDescription("æ´»åŠ¨ä¸»é¢˜:hdzt","hdzt");
+		FiledDescription  zjr=new FiledDescription("ä¸»è®²äºº:zjr","zjr");
+		FiledDescription  hdnf=new FiledDescription("æ´»åŠ¨å¹´ä»½:hdnf","hdnf");
 		
-		FiledDescription  bmjzsj=new FiledDescription("±¨Ãû½ØÖ¹Ê±¼ä:bmjzsj","bmjzsj");
-		FiledDescription  hdsj=new FiledDescription("»î¶¯Ê±¼ä:hdsj","hdsj");
-		FiledDescription  hdzzdw=new FiledDescription("»î¶¯×éÖ¯µ¥Î»:hdzzdw","hdzzdw");
-		FiledDescription  hddd=new FiledDescription("»î¶¯µØµã:hddd","hddd");
+		FiledDescription  bmjzsj=new FiledDescription("æŠ¥åæˆªæ­¢æ—¶é—´:bmjzsj","bmjzsj");
+		FiledDescription  hdsj=new FiledDescription("æ´»åŠ¨æ—¶é—´:hdsj","hdsj");
+		FiledDescription  hdzzdw=new FiledDescription("æ´»åŠ¨ç»„ç»‡å•ä½:hdzzdw","hdzzdw");
+		FiledDescription  hddd=new FiledDescription("æ´»åŠ¨åœ°ç‚¹:hddd","hddd");
 		
-		FiledDescription  bmzt=new FiledDescription("±¨Ãû×´Ì¬:bmzt","bmzt");
-		FiledDescription  zdcyrs=new FiledDescription("×î´óÈËÊı:zdcyrs","zdcyrs");
-		FiledDescription  dqcyrs=new FiledDescription("µ±Ç°±¨ÃûÈËÊı:dqcyrs","dqcyrs");
-		FiledDescription  hdpjrs=new FiledDescription("ÆÀ¼ÛÈËÊı:hdpjrs","hdpjrs");
+		FiledDescription  bmzt=new FiledDescription("æŠ¥åçŠ¶æ€:bmzt","bmzt");
+		FiledDescription  zdcyrs=new FiledDescription("æœ€å¤§äººæ•°:zdcyrs","zdcyrs");
+		FiledDescription  dqcyrs=new FiledDescription("å½“å‰æŠ¥åäººæ•°:dqcyrs","dqcyrs");
+		FiledDescription  hdpjrs=new FiledDescription("è¯„ä»·äººæ•°:hdpjrs","hdpjrs");
 		
-		FiledDescription  hdjb=new FiledDescription("¼¶±ğ:hdjb","hdjb");
-		FiledDescription  hdxf=new FiledDescription("Ñ§·Ö:hdxf","hdxf");
-		FiledDescription  create_at=new FiledDescription("´´½¨Ê±¼ä:createAt","createAt");
-		FiledDescription  create_by=new FiledDescription("´´½¨ÈË:createBy","createBy");
+		FiledDescription  hdjb=new FiledDescription("çº§åˆ«:hdjb","hdjb");
+		FiledDescription  hdxf=new FiledDescription("å­¦åˆ†:hdxf","hdxf");
+		FiledDescription  create_at=new FiledDescription("åˆ›å»ºæ—¶é—´:createAt","createAt");
+		FiledDescription  create_by=new FiledDescription("åˆ›å»ºäºº:createBy","createBy");
 		
-		FiledDescription  update_at=new FiledDescription("¸üĞÂÊ±¼ä:updateAt","updateAt");
-		FiledDescription  update_by=new FiledDescription("¸üĞÂÈË:updateBy","updateBy");
-		FiledDescription  record_status=new FiledDescription("×´Ì¬:recordStatus","recordStatus");
+		FiledDescription  update_at=new FiledDescription("æ›´æ–°æ—¶é—´:updateAt","updateAt");
+		FiledDescription  update_by=new FiledDescription("æ›´æ–°äºº:updateBy","updateBy");
+		FiledDescription  record_status=new FiledDescription("çŠ¶æ€:recordStatus","recordStatus");
 		
 		
-		//½¨Á¢ÊµÌåÓëÁĞÃû³Æ¹ØÏµÁĞ±í
+		//å»ºç«‹å®ä½“ä¸åˆ—åç§°å…³ç³»åˆ—è¡¨
 		List<FiledDescription> descriptions=new ArrayList<FiledDescription>();
 		descriptions.add(hdid);
 		descriptions.add(hdzt);
@@ -145,11 +149,11 @@ public class TrainingInfoServiceImpl implements TrainingInfoServiceI{
 		descriptions.add(hdxf);
 		descriptions.add(create_at);
 		descriptions.add(create_by);
-		//ÁĞÃû³ÆÓëÊµÌåÊôĞÔ¹ØÏµ´æ´¢µ½¼¯ºÏÖĞ
+		//åˆ—åç§°ä¸å®ä½“å±æ€§å…³ç³»å­˜å‚¨åˆ°é›†åˆä¸­
 		desc.setExcelFiledDescriptions(descriptions);
-		//¹¹½¨·µ»ØÄ£ĞÍ
+		//æ„å»ºè¿”å›æ¨¡å‹
 	    map.put(desc,list);
-	    //ÅĞ¶ÏÊı¾İÊäÈëÀàĞÍ£¬µ±ÊäÈëÊı¾İÊÇmapÊÇÏÂÃæÌîtrue ,·ñÔòÌîfalse
+	    //åˆ¤æ–­æ•°æ®è¾“å…¥ç±»å‹ï¼Œå½“è¾“å…¥æ•°æ®æ˜¯mapæ˜¯ä¸‹é¢å¡«true ,å¦åˆ™å¡«false
 		ExportExcelDataInfo dataInfo = new ExportExcelDataInfo();
 		dataInfo.setObjsMap(map);
 		dataInfo.setMap(true);

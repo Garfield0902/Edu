@@ -1,5 +1,5 @@
 var Announcement = function(){  
-    this.init = function(){  
+    this.init = function(){
         $('#inquireBtn').unbind('click').bind('click', function() {  
 //            $('#pageNo').val(1);// 每次查询都默认为打开第一页  
             announcement.settingQuery();  
@@ -104,7 +104,7 @@ function tjxfSubmit(){
 	editor.create()
 	
 	$('#tjxf_save').click(function(){
-		alert(editor.txt.html());
+//		alert(editor.txt.html());
 		$("#_hdnr_").val(editor.txt.html());
 		$('#_tjxf_').submit();
 	});
@@ -120,36 +120,10 @@ $(function(){
     $('#search').click(search);
     $('#datetimepicker').datetimepicker();
     $('.datetimepicker').css('width','300px');
-   // tjxfSubmit();
-    getMyInfo();
+    tjxfSubmit();
+
 });
 
 function search(){
 	announcement.settingQuery();
-}
-
-function getMyInfo(){
-	$.ajax({
-        type: 'post',  
-        async: true,  
-        url: 'jsjbxx/getJsjbxxInfo.do',  
-        dataType: "JSON",
-        contentType:'application/json;charset=UTF-8',//关键是要加上这行
-        traditional:true,//这使json格式的字符不会被转码
-        success: function (result) {
-        	result = result.body;
-        	$('#jzg').text(result.zgh);
-        	$('#name').text(result.xm);
-        	$('#sex').text(result.xbm);
-        	$('#job').text(result.xbm);
-        	$('#xueli').text(result.xldm);
-        	$('#date').text(result.rxsj);
-        	$('#department').text(result.bm);
-        	$('#phone').text(result.dwdh);
-        	$('#mobile').text(result.sj);
-        	$('#ruxiao').text(result.rxsj);
-        	$('#prevJob').text(result.aa);
-        	$('#email').text(result.dzxx);
-        }  
-    });
 }

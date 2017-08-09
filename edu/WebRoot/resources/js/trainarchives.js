@@ -33,8 +33,8 @@ var Announcement = function(){
         var searchType = $("input[name='searchType']:checked").val();
         data.searchType=searchType;
         if(searchType=='nd'){
-        	var pjnf = $("select[name=pjnf]").val();
-        	data.pjnf=pjnf;
+        	var hdnf = $("select[name=hdnf]").val();
+        	data.hdnf=hdnf;
         }
 		if(searchType=='qj'){
 			var time_start = $("input[name=time_start]").val();

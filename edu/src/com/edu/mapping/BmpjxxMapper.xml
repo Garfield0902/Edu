@@ -253,7 +253,7 @@
   				 ]]>
   			</if>
   		</if>
-  		<if test="searchType == 'nd'">
+  		<if test="searchType == 'zw'">
   			<if test="rzzgmcm != null" >
   				and dz.rzzgmcm=#{rzzgmcm}
   			</if>
@@ -286,7 +286,7 @@
   				 ]]>
   			</if>
   		</if>
-  		<if test="searchType == 'nd'">
+  		<if test="searchType == 'zw'">
   			<if test="rzzgmcm != null" >
   				and dz.rzzgmcm=#{rzzgmcm}
   			</if>

@@ -38,7 +38,6 @@ public class JsjbxxServiceImpl implements JsjbxxService{
 	public List<Jsjbxx> getAllJsjbxx(JsjbxxVo js) {
 		return mmper.getAllJsjbxx(js);
 	}
-
 	@Override
 	public int getAlljsjbxxCount(JsjbxxVo js) {
 		return mmper.getAllJsjbxxCount(js);
@@ -112,4 +111,5 @@ public class JsjbxxServiceImpl implements JsjbxxService{
 			pxhd.setZjr("NULL");
 		}
 	}
+
 }

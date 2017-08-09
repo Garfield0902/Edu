@@ -17,7 +17,6 @@ public class Pagination {
   
   
     public void setTotalCount(int totalCount) {  
-          
         this.totalCount = totalCount;  
         if (this.pageSize == 0) {//默认一页显示10条记录  
             this.pageSize = 10;  

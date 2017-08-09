@@ -42,7 +42,7 @@ import com.edu.vo.GenePageVo;
 import com.edu.vo.JsjbxxVo;
 import com.edu.vo.Pagination;
 import com.edu.vo.PxhdVo;
-import com.edu.vo.UserVo;
+import com.example.excelope.entity.UserVo;
 
 @Controller
 @RequestMapping("/trainingInfo")
@@ -292,5 +292,19 @@ public class TrainingInfoController {
 		}
 		return result;
 	}
+/*	@ResponseBody
+	@RequestMapping(value="/getBmById.do",method = RequestMethod.POST,consumes="application/json")
+	private GenePageVo getBmById(@RequestBody BmpjxxVo bmpjxxVo){
+
+		final GenePageVo<Bmpjxx> gv = new GenePageVo<Bmpjxx>();
+		int count = bmpjxxServiceImp.getAllJsjbxxCount(bmpjxxVo);
+		bmpjxxVo.setTotalCount(count);
+		Pagination p = new Pagination();
+		BeanUtils.copyProperties(bmpjxxVo, p);
+		List<Bmpjxx> list= bmpjxxServiceImp.getAllBmById(bmpjxxVo);
+		gv.setList(list);
+		gv.setPage(p);
+		return gv;
+	}*/
 	
 }

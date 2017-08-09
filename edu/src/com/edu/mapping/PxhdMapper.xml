@@ -362,4 +362,29 @@
          ]]>	
       </if>
   </select>
+  
+<!--   <insert id="insertTrainingInfoBach" parameterType="java.util.List"> 
+	    insert into app_pxhd (hdid, hdzt, zjr, 
+	      hdnf, bmjzsj, hdsj, 
+	      hdzzdw, hddd, bmzt, 
+	      zdcyrs, dqcyrs, hdpjrs, 
+	      hdjb, hdxf, create_at, 
+	      create_by, update_at, upate_by, 
+	      record_status, record_version, hdnr
+	      ) values  
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	    <![CDATA[ 
+	        values (${item.hdid}, ${item.hdzt}, ${item.zjr}, 
+	      ${item.hdnf}, ${item.bmjzsj}, ${item.hdsj}, 
+	      ${item.hdzzdw}, ${item.hddd}, ${item.bmzt}, 
+	      ${item.zdcyrs}, ${item.dqcyrs}, ${item.hdpjrs}, 
+	      ${item.hdjb}, ${item.hdxf}, ${item.createAt}, 
+	      ${item.createBy}, ${item.updateAt}, ${item.upateBy}, 
+	      ${item.recordStatus},${item.recordVersion}, ${item.hdnr}
+	      )
+	       ]]>  
+	    </foreach>  
+	</insert>   -->
+	
+	
 </mapper>

@@ -7260,9 +7260,7 @@ body {
 
 #mainnav li .arrow {
     float: right;
-    line-height: 1.42857;
-    position: relative;
-    top: 6px;
+    line-height: 1.42857
 }
 
 #mainnav li .arrow:before {

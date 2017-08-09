@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="resources/styles/masklayer.css">
 	<link rel="stylesheet" type="text/css" href="resources/styles/style.css">
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-datetimepicker.min.css">
-	
   </head>
   
   <body>

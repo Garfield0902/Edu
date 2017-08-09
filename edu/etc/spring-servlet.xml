@@ -24,6 +24,7 @@
 
 	<!-- 配置扫描的包 -->
 	<context:component-scan base-package="com.example.controller" />
+	<context:component-scan base-package="com.example.excelope.controller" />
 	<context:component-scan base-package="com.edu.controller" />
 
 	<!-- 此配置会自动扫描com.springdemo下的所有包中的含有注解的类（如@Controller, @Service等）；

@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.edu.domain.Pxhd;
-import com.edu.vo.BmpjxxVo;
 import com.edu.vo.PxhdVo;
 
 public interface PxhdMapper {
