@@ -1,5 +1,5 @@
 var Announcement = function(){  
-    this.init = function(){
+    this.init = function(){  
         $('#inquireBtn').unbind('click').bind('click', function() {  
 //            $('#pageNo').val(1);// 每次查询都默认为打开第一页  
             announcement.settingQuery();  
@@ -99,12 +99,11 @@ var Announcement = function(){
 };
 
 function tjxfSubmit(){
-	var E = window.wangEditor
-	var editor = new E('#tjxf_hdnr')
-	editor.create()
+	var E = window.wangEditor;
+	var editor = new E('#tjxf_hdnr');
+	editor.create();
 	
 	$('#tjxf_save').click(function(){
-//		alert(editor.txt.html());
 		$("#_hdnr_").val(editor.txt.html());
 		$('#_tjxf_').submit();
 	});
@@ -121,7 +120,6 @@ $(function(){
     $('#datetimepicker').datetimepicker();
     $('.datetimepicker').css('width','300px');
     tjxfSubmit();
-
 });
 
 function search(){

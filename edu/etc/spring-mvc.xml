@@ -86,6 +86,7 @@
 				<!-- <value>classpath*:mapper/**/*.xml</value> <value>classpath*:mapper/*.xml</value> -->
 				<value>classpath:com/edu/mapping/*.xml</value>
 				<value>classpath*:com/edu/component/mapping/*.xml</value>
+				<value>classpath*:com/edu/cache/mapping/*.xml</value>
 			</list>
 		</property>
 		<!-- <property name="configLocation" value="classpath:mybatis-config.xml"></property> -->

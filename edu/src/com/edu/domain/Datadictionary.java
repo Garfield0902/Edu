@@ -2,7 +2,9 @@ package com.edu.domain;
 
 public class Datadictionary {
     private String id;
-
+    
+    private String name;
+    
     private String type;
 
     private String value;
@@ -19,7 +21,15 @@ public class Datadictionary {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getType() {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getType() {
         return type;
     }
 

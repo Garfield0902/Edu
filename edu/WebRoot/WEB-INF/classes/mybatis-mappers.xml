@@ -14,7 +14,7 @@
 		<!-- 配置dao的所在包路径，多个包路径使用逗号间隔 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
 		<!-- 当存在多个dao目录时注意使用逗号间隔 -->
-    	<property name="basePackage" value="com.example.dao,com.edu.dao,com.edu.component.dao" />
+    	<property name="basePackage" value="com.example.dao,com.edu.dao,com.edu.component.dao,com.edu.cache.dao" />
     	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	

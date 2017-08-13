@@ -46,7 +46,6 @@ public class DataDictionaryServiceImpl implements DataDictionaryServiceI{
 	}
 	@Override
 	public int updateByPrimaryKeySelective(Datadictionary datadictionary) {
-		// TODO Auto-generated method stub
-		return datadictionaryMapper.updateByPrimaryKey(datadictionary);
+		return datadictionaryMapper.updateByPrimaryKeySelective(datadictionary);
 	}
 }

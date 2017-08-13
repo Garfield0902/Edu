@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,29 +43,27 @@ import com.edu.vo.GenePageVo;
 import com.edu.vo.JsjbxxVo;
 import com.edu.vo.Pagination;
 import com.edu.vo.PxhdVo;
-import com.example.excelope.entity.UserVo;
+import com.edu.vo.UserVo;
 
 @Controller
 @RequestMapping("/trainingInfo")
 public class TrainingInfoController {
-	
 	@Autowired
 	TrainingInfoServiceI trainingInfo;
+	
 	@Autowired
 	JsjbxxServiceImpl jsjbxxServiceImp; 
 	@Autowired
 	BmpjxxServiceImpl bmpjxxServiceImp;
-	@RequestMapping("/trainingInfoPage")
-	private String trainingInfoPage(){
-		return "trainingInfo";
-	}
+	
 	@RequestMapping("/activityManagementPage.do")
-	private String activityManagementPage(){
+	public String activityManagementPage(){
 		return "activityManagement";
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/getAllPxhd.do",method = RequestMethod.POST,consumes="application/json")
-	private GenePageVo getAllPxhd(@RequestBody PxhdVo pxhdVo,HttpServletRequest request){
+	public GenePageVo getAllPxhd(@RequestBody PxhdVo pxhdVo,HttpServletRequest request){
 		String zgh = "11";//(String)request.getSession().getAttribute("zgh");
 		
 		final GenePageVo<Pxhd> gv = new GenePageVo<Pxhd>();
@@ -78,6 +77,10 @@ public class TrainingInfoController {
 		return gv;
 	}
 	
+	@RequestMapping("/trainingInfoPage")
+	public String trainingInfoPage(){
+		return "trainingInfo";
+	}
 	@ResponseBody
 	@RequestMapping(value = "/exportTrainingInfo.do", method = { RequestMethod.GET,RequestMethod.POST },produces = "text/html;charset=UTF-8")
 	public String exportTrainingInfo(HttpServletRequest request, HttpServletResponse response,PxhdVo pxhdVo){
@@ -107,8 +110,6 @@ public class TrainingInfoController {
 		    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();  
 		    MultipartHttpServletRequest multipartRequest = commonsMultipartResolver.resolveMultipart((HttpServletRequest) shiroRequest.getRequest());  
 			
-//			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request; 
-//	        System.out.println("通过传统方式form表单提交方式导入excel文件！");  
 	        InputStream in =null;  
 	        List<List<Object>> listob = null;  
 	        MultipartFile file = multipartRequest.getFile("upfile");  
@@ -278,11 +279,13 @@ public class TrainingInfoController {
 		 mav.setViewName("redirect:/trainingInfo/activityManagementPage.do");
 		return mav;
 	}
+	
 	@RequestMapping(value="/selectTrainingInfoById.do",method = RequestMethod.POST)
 	@ResponseBody
 	private Pxhd selectTrainingInfoById(@RequestBody String hdid){
 		return trainingInfo.selectByPrimaryKey(hdid);
 	}
+	
 	@RequestMapping(value="/bmDelete.do",method = RequestMethod.POST,consumes="application/json")
 	private int bmDelete(@RequestBody String ids){
 		String[] array = ids.split(",");
@@ -292,19 +295,5 @@ public class TrainingInfoController {
 		}
 		return result;
 	}
-/*	@ResponseBody
-	@RequestMapping(value="/getBmById.do",method = RequestMethod.POST,consumes="application/json")
-	private GenePageVo getBmById(@RequestBody BmpjxxVo bmpjxxVo){
-
-		final GenePageVo<Bmpjxx> gv = new GenePageVo<Bmpjxx>();
-		int count = bmpjxxServiceImp.getAllJsjbxxCount(bmpjxxVo);
-		bmpjxxVo.setTotalCount(count);
-		Pagination p = new Pagination();
-		BeanUtils.copyProperties(bmpjxxVo, p);
-		List<Bmpjxx> list= bmpjxxServiceImp.getAllBmById(bmpjxxVo);
-		gv.setList(list);
-		gv.setPage(p);
-		return gv;
-	}*/
 	
 }

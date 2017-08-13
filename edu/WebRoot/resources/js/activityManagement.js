@@ -192,7 +192,7 @@ var ActivityManagement = function(){
 		    		$('#hdlx').val(result.hdlx);
 		    		$('#hdStatus').val(result.hdStatus);
 		    		$('#hdzzdw').val(result.hdzzdw);
-		    		editor.txt.html(result.nr);
+		    		editor.txt.html(result.hdnr);
     			}else{
     				$('#modalTime').text(new Date(result.hdsj).toLocaleString());
     				$('#ModalAddress').text(result.hddd);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cacheManager>
+    <!-- 字段说明：
+            dbName：缓存表对应的数据名(必填)
+            dbo:缓存表对应的dbo(必填)
+            table:缓存表的表名(必填)
+            columns:缓存表数据的字段，*表示缓存全部字段的数据，不想缓存全部可以自定义字段(多个时使用逗号间隔)
+            conditions:缓存表的哪些数据(起始不允许使用and、or等连接符)
+            fullCache:是否把查询出来的数据全量缓存(可与toMapField搭配使用,如果toMapField则要全量缓存)
+            toMapField:想要独立缓存的数据多个时使用逗号间隔(缓存key:子类map的key:子类map的value值)，例如：testMachine:MachineCode:UpdateTime(表示使用testMachine取缓存数据的map，map以设备编码为key，以更新时间为value)
+                调用说明：
+            1、首先CacheManager初始化
+            2、获取list数据：cacheManager.getCacheData(dbName_dbo_table)
+            3、获取map数据:cacheManager.getCacheData(dbName_dbo_table, toMapField定义的缓存key)
+                举例说明：
+            cacheManager.getCacheData(WFBDCMain_dbo_ISIP_tb_BaseInfo, cacheCcicBaseInfo)
+             -->
+    <cache dbName="edu" dbo="dbo" table="sys_datadictionary" columns="*" conditions="" fullCache="true" toMapField="" />
+	<!-- <cache dbName="BaseInfo" dbo="dbo" table="NIDC_dict_CyberType" columns="*" conditions="" fullCache="true" toMapField="" />
+	系统配置表
+	<cache dbName="WFBDCMain" dbo="dbo" table="WFBDC_tb_SysSetting" columns="*" conditions="" fullCache="true" toMapField="" />
+	CCIC基础信息表  columns:*表示查询所有的字段多个时使用逗号间隔  conditions:表示查询数据的条件
+	<cache dbName="WFBDCMain" dbo="dbo" table="ISIP_tb_BaseInfo" columns="IdentityCardNo" conditions="CurFlag>0" fullCache="true" toMapField="" />
+	设备表缓存 
+	<cache dbName="WFBDCMain" dbo="dbo" table="WFBDC_tb_Machine" columns="MachineID,MachineCode,MachineName,UnitID,UnitCode" conditions="CurFlag>0" fullCache="false" toMapField="cacheMapCodeList:MachineCode:MachineID,cacheMachineIDList:MachineID:MachineID" />
+	设备表缓存 
+	<cache dbName="WFBDCMain" dbo="dbo" table="WFBDC_tb_Unit" columns="UnitID,UnitCode,UnitName,AreaCode" conditions="CurFlag>0" fullCache="false" toMapField="cacheUnitCodeList:UnitCode:UnitCode" /> -->
+</cacheManager>

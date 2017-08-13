@@ -16,7 +16,12 @@ import com.edu.domain.Tzgg;
 import com.edu.service.AnnouncementServiceI;
 import com.edu.vo.AnnouncementVo;
 import com.edu.vo.Pagination;
-
+/**
+ * 综合分析模块
+ * @Description: TODO
+ * @author zhangwc
+ * @date 2017-8-8 下午2:37:51
+ */
 @RequestMapping("/analysis")
 @Controller
 public class AnalysisController {
@@ -29,7 +34,7 @@ public class AnalysisController {
 	private String analysisPage(){
 		return "analysis";
 	}
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value="/getAllTzgg.do",method = RequestMethod.POST,consumes="application/json")
 	private AnnouncementVo<Tzgg> getAllTzgg(@RequestBody Pagination pagination){
 		AnnouncementVo<Tzgg> announcementVo=new AnnouncementVo<Tzgg>();
@@ -37,6 +42,6 @@ public class AnalysisController {
 		List<Tzgg> list = announcement.getAllTzgg(announcementVo);
 		announcementVo.setList(list);
 		return announcementVo;
-	}
+	}*/
 }
 

@@ -55,7 +55,7 @@ var Announcement = function(){
                 xHtml += '<td width="20%">'+ new Date(list[i].createAt).toLocaleString() + '</td>';  
                 xHtml += '</tr>';
                 $('#announcementContentModalLabel').text(list[i].tzggbt);
-                $('#announcementContentModalText').html(list[i].nr);
+                $('#announcementContentModalText').html(list[i].tzggnr);
             }  
             $('#dataList').html(xHtml);  
             var pageBarStr = pageBar.pageInit(showData.page.totalPage, showData.page.pageNo,showData.page.totalCount, announcement.clickPage,announcement.setPageSize);
@@ -81,7 +81,7 @@ var Announcement = function(){
             contentType:'application/json;charset=UTF-8',//关键是要加上这行
             traditional:true,//这使json格式的字符不会被转码
             success: function (result) {
-    			$('#announcementContentModalText').html(result.nr);
+    			$('#announcementContentModalText').html(result.tzggnr);
     			$('#announcementContentModalLabel').text(result.tzggbt);
     			//editor.txt.html(result.nr);
             }  

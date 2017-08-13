@@ -1,6 +1,5 @@
 package com.edu.vo;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 public class PxhdVo  extends Pagination{
@@ -44,21 +43,11 @@ public class PxhdVo  extends Pagination{
 
     private Integer recordVersion;
 
-    private byte[] hdnr;
-    
-    private String nr;
+    private String hdnr;
     
     private Date startDate;
     
     private Date endDate;
-
-    public String getNr() {
-		return nr;
-	}
-
-	public void setNr(String nr) {
-		this.nr = nr;
-	}
 
 	public Date getStartDate() {
 		return startDate;
@@ -236,16 +225,25 @@ public class PxhdVo  extends Pagination{
         this.recordVersion = recordVersion;
     }
 
-    public byte[] getHdnr() {
-        return hdnr;
-    }
+	public String getHdnr() {
+		return hdnr;
+	}
 
-    public void setHdnr(byte[] hdnr) {
-        this.hdnr = hdnr;
-        try {
-			this.nr = new String(hdnr,"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-    }
+	public void setHdnr(String hdnr) {
+		this.hdnr = hdnr;
+	}
+
+	@Override
+	public String toString() {
+		return "PxhdVo [hdid=" + hdid + ", hdzt=" + hdzt + ", zjr=" + zjr
+				+ ", hdnf=" + hdnf + ", bmjzsj=" + bmjzsj + ", hdsj=" + hdsj
+				+ ", hdzzdw=" + hdzzdw + ", hddd=" + hddd + ", bmzt=" + bmzt
+				+ ", zdcyrs=" + zdcyrs + ", dqcyrs=" + dqcyrs + ", hdpjrs="
+				+ hdpjrs + ", hdjb=" + hdjb + ", hdxf=" + hdxf + ", createAt="
+				+ createAt + ", createBy=" + createBy + ", updateAt="
+				+ updateAt + ", upateBy=" + upateBy + ", recordStatus="
+				+ recordStatus + ", recordVersion=" + recordVersion + ", hdnr="
+				+ hdnr + ", startDate=" + startDate + ", endDate=" + endDate
+				+ "]";
+	}
 }

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,14 +32,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                        <div class="form-group">
 					                            <select class="form-control" id="typeform">
 					                            	<option value="">选择类型</option>
-					                            	<option value="aaa">aaaa</option>
-					                            	<option value="bbb">bbbb</option>
+					                            	<c:forEach var="item" items="${dictype}">
+					                            		<option value="${item.type }" val="${item.value }">${item.key}</option>
+					                            	</c:forEach>
 					                            </select>
 					                        </div>
 					                        <button type="button" id="search" class="btn btn-info">查询</button>
 						                </form>
 				                    </div>
 				                    <div class="col-xs-4 text-right">
+				                    	<button type="button" class="btn btn-info" id="addDicType">添加字典类型</button>
 				                        <button type="button" class="btn btn-info" id="addBtn">添加</button>
 				                        <button type="button" class="btn btn-info" id="deleteBtn">删除</button>
 				                    </div>
@@ -54,6 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													class="table table-striped table-bordered table-hover text-center dataTable">
 													<tr>
 														<th><input type="checkbox" id="checkAll" /></th>
+														<th>名称</th>
 														<th>数据类型</th>
 														<th>键值	</th>
 														<th>顺序</th>
@@ -86,22 +90,86 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="addDicTypeDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+	        <h4 class="modal-title" id="addModalTitle">添加字典类型</h4>
+	      </div>
+	      <div class="modal-body" id="signUpModalText">
+	        <form class="form-horizontal" action="dataDictionary/addDataDictionary.do" id="addDictionaryTypeForm" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="dic_name" name="name" placeholder="名称">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">字典类型</label>
+                <div class="col-sm-10">
+                	<input type="text" class="form-control" id="dic_type"  name="type" placeholder="字典类型">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">值</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="dic_value" name="value" value="-1" readonly="readonly" placeholder="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">顺序</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="dic_orderData" name="orderData"  value="0" readonly="readonly" placeholder="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">描述</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="dic_des" name="des" placeholder="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="button" id="addDictionaryTypeBtn" class="btn btn-success">保存</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+              </div>
+            </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	
+	
 	<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-	        <h4 class="modal-title" id="addModalTitle">添加数据类型</h4>
+	        <h4 class="modal-title" id="addModalTitle">更新/添加数据类型</h4>
 	      </div>
 	      <div class="modal-body" id="signUpModalText">
 	        <form class="form-horizontal" action="dataDictionary/addDataDictionary.do" id="addDataDictionaryForm" method="post">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                <div class="col-sm-10">
+                <input type="hidden" class="form-control" id="id" name="id" placeholder="名称">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="名称">
+                </div>
+              </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">字典类型</label>
                 <div class="col-sm-10">
                 	<input type="hidden" name="id" value="" id="dataDictionaryIdInput">
                   <select class="form-control" id="type" name="type" placeholder="">
-                  	<option value="aaa">aaaa</option>
-                  	<option value="bbb">bbbb</option>
+                	<option value="">选择类型</option>
+                   	<c:forEach var="item" items="${dictype}">
+                   		<option value="${item.type }" type="${item.value }">${item.key}</option>
+                   	</c:forEach>
                   </select>
                 </div>
               </div>
@@ -134,6 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </div>
 	  </div>
 	</div>
+	
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">

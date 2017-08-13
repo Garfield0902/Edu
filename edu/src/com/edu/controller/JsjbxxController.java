@@ -36,7 +36,7 @@ public class JsjbxxController {
 		logger.debug("当前用户信息");
 
 		final GeneVo<Jsjbxx> gv = new GeneVo<Jsjbxx>();
-		String zgh = (String)req.getSession().getAttribute("zgh");
+		String zgh = "11";//(String)req.getSession().getAttribute("zgh");
 		
 		if(StringUtils.isEmpty(zgh)){
 			gv.setMsg("当前用户职工号为空，查看失败！");
@@ -80,7 +80,7 @@ public class JsjbxxController {
 	
 	@RequestMapping(value="/addJsxf.do",method = RequestMethod.POST)
 	public String addJsxf(TjxfVo js){
-		logger.debug("查询所有用户！");
+		logger.debug("添加学分！");
 		service.addJsxf(js);
 		return "teachermanage";
 	}

@@ -25,9 +25,7 @@ public class Tzgg {
 
     private Integer recordVersion;
 
-    private byte[] tzggnr;
-    
-    private String nr;
+    private String tzggnr;
 
     public String getTzggh() {
         return tzggh;
@@ -109,25 +107,12 @@ public class Tzgg {
         this.recordVersion = recordVersion;
     }
 
-    public byte[] getTzggnr() {
-        return tzggnr;
-    }
-
-    public void setTzggnr(byte[] tzggnr) {
-        this.tzggnr = tzggnr;
-        try {
-			this.nr = new String(tzggnr,"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-    }
-
-	public String getNr() {
-		return nr;
+	public String getTzggnr() {
+		return tzggnr;
 	}
 
-	public void setNr(String nr) {
-		this.nr = nr;
+	public void setTzggnr(String tzggnr) {
+		this.tzggnr = tzggnr == null ? null : tzggnr.trim();
 	}
 
 	@Override
@@ -136,7 +121,7 @@ public class Tzgg {
 				+ tzggsj + ", tzggbz=" + tzggbz + ", createAt=" + createAt
 				+ ", createBy=" + createBy + ", updateAt=" + updateAt
 				+ ", updateBy=" + updateBy + ", recordStatus=" + recordStatus
-				+ ", recordVersion=" + recordVersion + ", tzggnr="
-				+ Arrays.toString(tzggnr) + ", nr=" + nr + "]";
+				+ ", recordVersion=" + recordVersion + ", tzggnr=" + tzggnr
+				+ "]";
 	}
 }

@@ -118,7 +118,7 @@ var AnnouncementManage = function(){
             traditional:true,//这使json格式的字符不会被转码
             success: function (result) {
     			$('#tzggbt').val(result.tzggbt);
-    			editor.txt.html(result.nr);
+    			editor.txt.html(result.tzggnr);
     			if(result.tzggbz === 1){
     				$('[name="tzggbz"]').prop('checked',true);
     			}else{
