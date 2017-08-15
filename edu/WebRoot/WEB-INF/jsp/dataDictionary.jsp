@@ -157,14 +157,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
                 <div class="col-sm-10">
-                <input type="hidden" class="form-control" id="id" name="id" placeholder="名称">
+                 <input type="hidden" class="form-control" id="id" name="id" value="" placeholder="名称">
                   <input type="text" class="form-control" id="name" name="name" placeholder="名称">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">字典类型</label>
                 <div class="col-sm-10">
-                	<input type="hidden" name="id" value="" id="dataDictionaryIdInput">
                   <select class="form-control" id="type" name="type" placeholder="">
                 	<option value="">选择类型</option>
                    	<c:forEach var="item" items="${dictype}">

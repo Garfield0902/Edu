@@ -51,20 +51,32 @@ public class SelectData{
 	 * @return List<SelectEntity>  
 	 * @date 2017-8-4
 	 */
-	public List<SelectEntity> getSelectByType(String type){
+	public List<SelectEntity> getSelectByType(String type,boolean isContain){
 		List<SelectEntity> list = new ArrayList<SelectEntity>();
 		List<Map<String, Object>> lm =  cacheManager.getCacheData("edu_dbo_sys_datadictionary");
 		for(Map<String,Object> m:lm){
 			String id = (String) m.get("id");
-			String key = (String) m.get("type");
-			String value = (String) m.get("value");
-			if(key.equals(type)){
+    		String key = (String) m.get("name");
+    		String value = (String) m.get("value");
+    		String ttype = (String) m.get("type");
+    		Integer order = (Integer) m.get("orderData");
+			if(ttype.equals(type)){
 				SelectEntity se = new SelectEntity(id,key,value);
-				list.add(se);
+				se.setType(ttype);
+    			se.setOrder(order);
+    			if(isContain){
+    				list.add(se);
+    			}else{
+	    			if(!"-1".equals(value)){
+	    				list.add(se);
+	    			}
+    			}
 			}
 		}
 		return list;
 	}
+	
+	
 	/**
 	 * 刷新缓存，刷新 下拉框内容
 	 * @author zhangwc

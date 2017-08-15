@@ -16,6 +16,7 @@
             cacheManager.getCacheData(WFBDCMain_dbo_ISIP_tb_BaseInfo, cacheCcicBaseInfo)
              -->
     <cache dbName="edu" dbo="dbo" table="sys_datadictionary" columns="*" conditions="" fullCache="true" toMapField="" />
+    <cache dbName="edu" dbo="dbo" table="app_department" columns="*" conditions="" fullCache="true" toMapField="" />
 	<!-- <cache dbName="BaseInfo" dbo="dbo" table="NIDC_dict_CyberType" columns="*" conditions="" fullCache="true" toMapField="" />
 	系统配置表
 	<cache dbName="WFBDCMain" dbo="dbo" table="WFBDC_tb_SysSetting" columns="*" conditions="" fullCache="true" toMapField="" />

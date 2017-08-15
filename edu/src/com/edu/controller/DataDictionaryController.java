@@ -127,7 +127,7 @@ public class DataDictionaryController {
 	@ResponseBody
 	public List<SelectEntity> selectDataDictionaryByType(@RequestBody String type){
 		//刷新缓存
-		List<SelectEntity> lt = selectData.getSelectByType(type);
+		List<SelectEntity> lt = selectData.getSelectByType(type,false);
 		return lt;
 	}
 	

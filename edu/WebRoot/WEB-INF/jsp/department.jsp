@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -51,8 +52,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						data-original-title="" title="">
 							<div class="username hidden-xs">test</div>
 					</a>
-
-
 						<div
 							class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
 							<div class="pad-all bord-btm">
@@ -164,35 +163,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*上级机构：</label>
 							<div class="col-sm-10">
-								<select class="form-control">
-									<option></option>
+								<select class="form-control" name="pid" >
+									<option value="0">选择机构</option>
+									<c:forEach var="item" items="${departs}">
+	                            		<option value="${item.id }" dcode="${item.dcode }" dtype="${item.dtype }">${item.dname}</option>
+	                            	</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构名称：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="" placeholder="">
+								<input type="text" class="form-control" name="dname" placeholder="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构代码：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="" placeholder="">
+								<input type="text" class="form-control" name="dcode" placeholder="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构类型：</label>
 							<div class="col-sm-10">
-								<select class="form-control">
-									<option></option>
+								<select class="form-control" name="dtype">
+									<c:forEach var="item" items="${dtypes}">
+	                            		<option value="${item.value }" dtype="${item.type }">${item.key}</option>
+	                            	</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构顺序：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="" placeholder="">
+								<input type="text" class="form-control" name="dorder" placeholder="">
 							</div>
 						</div>
 						<div class="form-group">
