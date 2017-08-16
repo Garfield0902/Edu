@@ -2,7 +2,7 @@ package com.edu.vo;
 
 import java.util.Date;
 
-public class UserVo {
+public class UserVo   extends Pagination{
 	private String id;
 
     private String name;

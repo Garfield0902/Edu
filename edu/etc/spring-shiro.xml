@@ -13,22 +13,48 @@
 		
 	<context:component-scan base-package="com.edu.realm" />
 		
-<!-- 配置自定义Realm -->
-	<bean id="myRealm" class="com.edu.realm.AuthorizeRealm" />
-	
+	<!-- 配置自定义Realm -->
+	<!-- <bean id="myRealm" class="com.edu.realm.AuthorizeRealm" /> -->
 	<!-- 安全管理器 -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	<!-- <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm"></property>
+	</bean> -->
+	
+	<bean id="casRealm" class="com.edu.realm.MyCasRealm">
+        <!-- 认证通过后的默认角色 -->
+        <property name="defaultRoles" value="ROLE_USER" />
+        <!-- cas服务端地址前缀 -->
+        <property name="casServerUrlPrefix" value="${shiro.cas.serverUrlPrefix}" />
+        <!-- 应用服务地址，用来接收cas服务端票据 -->
+        <property name="casService" value="${shiro.cas.service}" />
+    </bean>
+	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="subjectFactory" ref="casSubjectFactory"></property>
+        <property name="realm" ref="casRealm" />
 	</bean>
+	<bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"></bean>
+	
 	<!-- Shiro过滤器 核心-->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login.jsp" />
-		<property name="unauthorizedUrl" value="/nopower.jsp" />
+		<!-- 设定用户的登录链接，这里为cas登录页面的链接地址可配置回调地址 -->
+        <property name="loginUrl" value="${shiro.loginUrl}" />
+		<!-- <property name="unauthorizedUrl" value="/nopower.jsp" /> -->
 		
-		<!-- 在这里我们配置了上文中所提到的自定义myRealm,这样Shiro就可以按照我们自定义的逻辑来进行权限验证了 -->
+		<property name="filters">
+            <map>
+                <!-- 添加casFilter到shiroFilter -->
+                <entry key="casFilter" value-ref="casFilter" />
+                <entry key="logoutFilter" value-ref="logoutFilter" />
+            </map>
+        </property>
+		
 		<property name="filterChainDefinitions">
 			<value>
+				/shiro-cas=casFilter
+                /logout=logoutFilter
+                
 				<!--anon 表示匿名访问，不需要认证以及授权-->
 				<!-- /loginAdmin=anon的意思的意思是，发起/loginAdmin这个请求是不需要进行身份认证的，这个请求在这次项目中是一个登录请求，一般对于这样的请求都是不需要身份认证的 -->
 				/loginAdmin=anon
@@ -44,6 +70,18 @@
 			</value>
 		</property>
 	</bean>
+	
+	<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
+        <!-- 配置验证错误时的失败页面 -->
+        <property name="failureUrl" value="${shiro.failureUrl}" />
+        <property name="successUrl" value="${shiro.successUrl}" />
+    </bean>
+
+    <bean id="logoutFilter" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <!-- 配置验证错误时的失败页面 -->
+        <property name="redirectUrl" value="${shiro.logoutUrl}" />
+    </bean>
+	
 	
 	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

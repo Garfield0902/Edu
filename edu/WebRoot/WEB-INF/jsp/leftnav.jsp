@@ -62,8 +62,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </a>
                                 <ul class="collapse">
                                     <li><a href="<%= basePath %>department/info.do">组织架构</a></li>
-                                    <li><a href="yonghuguanli.html">用户管理</a></li>
+                                    <li><a href="<%= basePath %>user/getAllUserPage.do">用户管理</a></li>
                                     <li><a href="<%= basePath %>roleManagement/roleManagementPage.do">角色管理</a></li>
+                                    <li><a href="<%= basePath %>permission/getAllPermissionPage.do">权限管理</a></li>
                                     <li><a href="<%= basePath %>dataDictionary/dataDictionaryPage.do">数据字典</a></li>
                                     <li><a href="<%= basePath %>systemLog/systemLogPage.do">操作日志</a></li>
                                     <li><a href="<%= basePath %>backupManagement/backupManagementPage.do">备份管理</a></li>

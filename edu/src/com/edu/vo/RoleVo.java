@@ -1,7 +1,40 @@
 package com.edu.vo;
 
-import java.util.Date;
 
 public class RoleVo  extends Pagination{
-    
+	private String id;
+
+    private String name;
+
+    private String desc;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	@Override
+	public String toString() {
+		return "RoleVo [id=" + id + ", name=" + name + ", desc=" + desc + "]";
+	}
+
 }

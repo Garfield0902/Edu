@@ -43,6 +43,7 @@ public class RoleManagementController {
 		gv.setPage(p);
 		return gv;
 	}
+	
 	@RequestMapping(value="/addRoleManagement.do",method = RequestMethod.POST)
 	private ModelAndView addRole(Role role){
 		ModelAndView mav = new ModelAndView();

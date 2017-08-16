@@ -14,26 +14,25 @@ import com.edu.dao.PermissionMapper;
 import com.edu.dao.UserMapper;
 import com.edu.domain.User;
 import com.edu.service.UserServiceI;
+import com.edu.vo.UserVo;
 /**
- * @author 11016
- * ʹ��@Service ע�⽫UserServiceImpl���עΪһ�� service
- * ���service��id�� userService
+ * 用户管理
+ * @Description: TODO
+ * @author zhangwc
+ * @date 2017-8-16 下午4:14:59
  */
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserServiceI{
 	Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
-	/**
-	 * ʹ�� @Autowired ע���עuserMapper������
-	 */
 	@Autowired
 	private UserMapper userMapper;
 	@Autowired
 	private PermissionMapper permissionMapper;
 	
 	@Override
-	public void addUser(User user) {
-		userMapper.insert(user);
+	public int addUser(User user) {
+		return userMapper.insertSelective(user);
 	}
 
 	@Override
@@ -74,5 +73,26 @@ public class UserServiceImpl implements UserServiceI{
 			permissions.addAll(tp);
 		}
 		return permissions;
+	}
+
+	@Override
+	public List<User> getAllUser(UserVo userVo) {
+		List<User> list = userMapper.getAllUserPage(userVo);
+		return list;
+	}
+
+	@Override
+	public int getAllUserCount(UserVo userVo) {
+		return userMapper.getAllUserPageCount(userVo);
+	}
+
+	@Override
+	public int update(User u) {
+		return userMapper.updateByPrimaryKeySelective(u);
+	}
+
+	@Override
+	public int deleteByPrimaryKey(String id) {
+		return userMapper.deleteByPrimaryKey(id);
 	}
 }

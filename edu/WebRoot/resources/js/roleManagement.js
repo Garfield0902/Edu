@@ -44,33 +44,37 @@ var RoleManagement = function(){
         $(document).on('click','.permission',function(){
         	var id = $(this).attr('id');
         	$('#permissionModal').modal();
+        	
         	var setting = {
-                data: {
-                    simpleData: {
-                        enable: true
-                    }
-                }
+                    data: {
+                        simpleData: {  
+                            enable:true,  
+                        }
+                    },
+                check:{
+	                enable: true  
+	            }
             };
-            var zNodes =[
-                { name:"父节点1 - 展开", open:true,
-                    children: [
-                        { name:"父节点11 - 折叠",
-                            children: [
-                                { name:"叶子节点111"},
-                                { name:"叶子节点112"},
-                                { name:"叶子节点113"},
-                                { name:"叶子节点114"}
-                            ]},
-                        { name:"父节点12 - 折叠",
-                            children: [
-                                { name:"叶子节点121"},
-                                { name:"叶子节点122"},
-                                { name:"叶子节点123"},
-                                { name:"叶子节点124"}
-                            ]}
-                    ]}
+        	var zNodes =[
+        	                { name:"父节点1 - 展开", open:true,
+        	                    children: [
+        	                        { name:"父节点11 - 折叠",
+        	                            children: [
+        	                                { name:"叶子节点111"},
+        	                                { name:"叶子节点112"},
+        	                                { name:"叶子节点113"},
+        	                                { name:"叶子节点114"}
+        	                            ]},
+        	                        { name:"父节点12 - 折叠",
+        	                            children: [
+        	                                { name:"叶子节点121"},
+        	                                { name:"叶子节点122"},
+        	                                { name:"叶子节点123"},
+        	                                { name:"叶子节点124"}
+        	                            ]}
+        	                    ]}
 
-            ];
+        	            ]; 
             $.fn.zTree.init($("#permissionTree"), setting, zNodes);
         });
 
@@ -82,19 +86,18 @@ var RoleManagement = function(){
         var url = 'roleManagement/getAllRoleManagement.do';
         var inquireData = roleManagement.acquireInquireData();  
         $.ajax({
-            type: 'post',  
+            type: 'post',
             async: true,  
-            url: url,  
+            url: url,
             data: JSON.stringify(inquireData),
             dataType: "JSON",
             contentType:'application/json;charset=UTF-8',//关键是要加上这行
             traditional:true,//这使json格式的字符不会被转码
             success: function (result) {
-        		roleManagement.callback(result);  
-            }  
-        });  
-      
-    };   
+        		roleManagement.callback(result);
+            }
+        });
+    };
     this.acquireInquireData = function(){ 
         var data = {
         		pageSize:parseInt($('#pageSize').val()),  
@@ -117,18 +120,17 @@ var RoleManagement = function(){
             for (var i = 0; i < list.length; i++) {  
                 detailId = i;  
                 xHtml += '<tr><td><input value="'+list[i].id+'" type="checkbox" name="checkbox"/></td>'+
-		        '<td>'+ list[i].type +'</td>'+
-		        '<td>'+ list[i].value +'</td>'+
-		        '<td>'+ list[i].orderData +'</td>'+
-		        '<td>'+ list[i].des +'</td>'+
-		        '<td><a id="'+list[i].id+'" class="modify" href="javascript:;">修改</a>&nbsp;<a class="permission" id="'+list[i].id+'" href="javascript:;">分配权限</a>'
+		        '<td>'+ list[i].name +'</td>'+
+		        '<td>'+ list[i].desc +'</td>'+
+		        '<td><a class="permission" id="'+list[i].id+'" href="javascript:;">分配权限</a>'
                 '</tr>';
             }  
+            /*<a id="'+list[i].id+'" class="modify" href="javascript:;">修改</a>&nbsp;*/
             $('#dataList').html(xHtml);  
             var pageBarStr = pageBar.pageInit(showData.page.totalPage, showData.page.pageNo,showData.page.totalCount, roleManagement.clickPage,roleManagement.setPageSize);
             $('.search-footer').html(pageBarStr);
             $('#pageSizeSelect option[value="'+$('#pageSize').val()+'"]').attr("selected", true);
-        } 
+        }
     }; 
       
     this.clickPage = function(page){  

@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
                 <div class="col-sm-10">
-                 <input type="hidden" class="form-control" id="id" name="id" value="" placeholder="名称">
+                  <input type="hidden" class="form-control" id="id" name="id" value="" placeholder="id">
                   <input type="text" class="form-control" id="name" name="name" placeholder="名称">
                 </div>
               </div>

@@ -101,14 +101,16 @@ public class DepartmentController {
 	}
 	
 	@RequestMapping(value="/updateDept.do",method = RequestMethod.POST)
-	public String updateDept(DepartmentVo dvo){
+	public ModelAndView updateDept(DepartmentVo dvo){
+		ModelAndView mav = new ModelAndView();
 		logger.debug("修改部门！");
 		Department d = new Department();
 		BeanUtils.copyProperties(dvo,d);
 		service.updateDept(d);
 		//刷新缓存
 		sd.reloadCache();
-		return "department";
+		mav.setViewName("redirect:/department/info.do");
+		return mav;
 	}
 	
 	@RequestMapping(value="/delDept.do",method ={RequestMethod.POST,RequestMethod.GET},consumes="application/json")

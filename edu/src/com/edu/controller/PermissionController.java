@@ -19,61 +19,62 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.component.Log;
-import com.edu.domain.Role;
+import com.edu.domain.Permission;
 import com.edu.domain.User;
-import com.edu.service.UserServiceI;
+import com.edu.service.PermissionServiceI;
 import com.edu.vo.GenePageVo;
 import com.edu.vo.Pagination;
+import com.edu.vo.PermissionVo;
 import com.edu.vo.UserVo;
 
+
 @Controller
-@RequestMapping("/user")
-public class UserController {
-	Logger logger = LoggerFactory.getLogger(UserController.class);
+@RequestMapping("/permission")
+public class PermissionController {
+Logger logger = LoggerFactory.getLogger(PermissionController.class);
 	
 	@Autowired
-	public UserServiceI userService;
+	public PermissionServiceI permissionService;
 	
-	@RequestMapping("/getAllUserPage.do")
+	@RequestMapping("/getAllPermissionPage.do")
 	public String turn2Page(HttpServletRequest req){
-		return "user";
+		return "permission";
 	}
 	
-	@RequestMapping(value = "/getAllUser.do",method={RequestMethod.GET,RequestMethod.POST},consumes="application/json")
+	@RequestMapping(value = "/getAllPermission.do",method={RequestMethod.GET,RequestMethod.POST},consumes="application/json")
 	@ResponseBody
-	@Log(operationName="查看所有用户列表",operationType="archives操作")
-	public GenePageVo getAllUser(@RequestBody UserVo userVo){
-		final GenePageVo<User> gv = new GenePageVo<User>();
-		int count = userService.getAllUserCount(userVo);
-		userVo.setTotalCount(count);
+	@Log(operationName="查看权限列表",operationType="getAllPermission操作")
+	public GenePageVo getAllPermission(@RequestBody PermissionVo permissionVo){
+		final GenePageVo<Permission> gv = new GenePageVo<Permission>();
+		int count = permissionService.getAllPermissionCount(permissionVo);
+		permissionVo.setTotalCount(count);
 		Pagination p = new Pagination();
-		BeanUtils.copyProperties(userVo, p);
-		List<User> list= userService.getAllUser(userVo);
+		BeanUtils.copyProperties(permissionVo, p);
+		List<Permission> list= permissionService.getAllPermission(permissionVo);
 		gv.setList(list);
 		gv.setPage(p);
 		return gv;
 	}
 	
-	@RequestMapping(value="/addUser.do",method = RequestMethod.POST)
-	public ModelAndView addUser(UserVo user){
+	@RequestMapping(value="/addPermission.do",method = RequestMethod.POST)
+	public ModelAndView addPermission(PermissionVo permission){
 		ModelAndView mav = new ModelAndView();
-		User u = new User();
-		BeanUtils.copyProperties(user,u);
-		String id = user.getId();
+		Permission p = new Permission();
+		BeanUtils.copyProperties(permission,p);
+		String id = permission.getId();
 		int result = 0;
 		if(StringUtils.isEmpty(id)){
-			u.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-			u.setCreatedate(new Date());
-			result = userService.addUser(u);
+			p.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+			result = permissionService.addPermission(p);
 		}else{
-			result = userService.update(u);
+			result = permissionService.update(p);
 		}
 		if(result==1){
 			mav.addObject("msg", "操作成功！");
 		}else{
 			mav.addObject("msg", "操作失败！");
 		}
-		 mav.setViewName("redirect:/user/getAllUserPage.do");
+		 mav.setViewName("redirect:/permission/getAllPermissionPage.do");
 		return mav;
 	}
 	
@@ -83,12 +84,9 @@ public class UserController {
 		String[] array = ids.split(",");
 		int result = 0;
 		for(int i = 0;i < array.length; i++){
-			result = userService.deleteByPrimaryKey(array[i]);
+			result = permissionService.deleteByPrimaryKey(array[i]);
 		}
 		return result;
 	}
 	
-	public String getUserByName(HttpServletRequest req){
-		return "";
-	}
 }

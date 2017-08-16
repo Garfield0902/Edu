@@ -12,7 +12,7 @@ var DataDictionary = function(){
         });
         $(document).on('click','#addBtn',function(){
 //        	$("#id").val("");
-        	$("#addDataDictionaryForm")[0].reset();
+        	$('#addDataDictionaryForm')[0].reset();
         	$('#add').modal();
         	$('#addDataDictionaryForm select,#addDataDictionaryForm input').attr('disabled',false);
         	$('#addModalTitle').text('添加数据类型');
@@ -110,6 +110,7 @@ var DataDictionary = function(){
           //添加查看事件
             $("#dataList  a[flag='dictview_']").each(function(){
             	$(this).click(function(){
+            		
                 	$("#view_did").val($(this).attr("did"));
                 	$("#view_dname").val($(this).attr("dname"));
                 	$("#view_dcode").val($(this).attr("dcode"));
@@ -122,8 +123,8 @@ var DataDictionary = function(){
             //添加修改事件
             $("#dataList  a[flag='dictmodify_']").each(function(){
             	$(this).click(function(){
-            		$("#addDataDictionaryForm")[0].reset();
-                	$("#id").val($(this).attr("did"));
+            		$('#addDataDictionaryForm')[0].reset();
+            		$("#id").val($(this).attr("did"));
                 	$("#name").val($(this).attr("dname"));
                 	$("#value").val($(this).attr("dvalue"));
                 	$("#type").val($(this).attr("dtype"));

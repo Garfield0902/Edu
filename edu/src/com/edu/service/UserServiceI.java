@@ -4,39 +4,47 @@ import java.util.List;
 import java.util.Set;
 
 import com.edu.domain.User;
+import com.edu.vo.UserVo;
 
 public interface UserServiceI {
 	/**
-	 * Ìí¼ÓÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @param user
 	 */
-	void addUser(User user);
+	int addUser(User user);
 	/**
-	 * ¸ù¾ÝÓÃ»§Id»ñÈ¡ÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Idï¿½ï¿½È¡ï¿½Ã»ï¿½
 	 * @param userId
 	 * @return
 	 */
 	User getUserById(String userId);
 	/**
-	 * »ñÈ¡ËùÓÐUser
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½User
 	 * @return
 	 */
 	public List<User> getAllUser();
 	/**
-	 * Í¨¹ýÓÃ»§Ãû»ñÈ¡ÓÃ»§
+	 * Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ã»ï¿½
 	 * @return
 	 */
 	public User getUserByName(String user);
 	/**
-	 * Í¨¹ýuserName»ñÈ¡ÓÃ»§½ÇÉ«
+	 * Í¨ï¿½ï¿½userNameï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½É«
 	 * @param userName
 	 * @return
 	 */
 	public Set<String> findRoles(String userName);
 	/**
-	 * Í¨¹ýÓÃ»§Ãû»ñÈ¡È¨ÏÞ
+	 * Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È¡È¨ï¿½ï¿½
 	 * @param userName
 	 * @return
 	 */
 	public Set<String> findPermissions(String userName);
+	
+	List<User> getAllUser(UserVo userVo);
+	int getAllUserCount(UserVo userVo);
+	
+	int update(User u);
+	
+	int deleteByPrimaryKey(String string);
 }

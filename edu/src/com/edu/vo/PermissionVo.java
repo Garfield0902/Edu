@@ -1,12 +1,9 @@
-package com.edu.domain;
+package com.edu.vo;
 
-public class Permission {
+public class PermissionVo extends Pagination{
     private String id;
-
     private String token;
-
     private String url;
-
     private String desc;
 
     public String getId() {

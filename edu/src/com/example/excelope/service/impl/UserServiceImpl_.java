@@ -18,7 +18,7 @@ import com.example.excelope.entity.UserEntity;
 import com.example.excelope.entity.UserVo;
 import com.example.excelope.service.UserService;
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl_ implements UserService{
 
 	@Override
 	public List<UserEntity> searchUserInfo(UserVo userVo) throws ParseException {

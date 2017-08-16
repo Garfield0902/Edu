@@ -7,6 +7,7 @@ var SystemLog = function(){
     //根据查询条件查询  
     this.settingQuery = function(){  
         $('#pageBar').html('');  
+        $('#dataList').html('');
         var url = 'systemLog/getAllSystemLog.do';  
         var logtype = $('#logtype').val();
         var inquireData = systemLog.acquireInquireData();

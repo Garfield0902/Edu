@@ -13,7 +13,7 @@ var zTree =function(){
 		            traditional:true,//这使json格式的字符不会被转码
 		            success: function (result) {
 		            	ztree.flushtree(result.list);
-		            }  
+		            }
 		        });
 			},
 			this.flushtree = function(zNodes){
@@ -98,22 +98,23 @@ function searchData1(id){
 		        '<td>'+ dtype +'</td>'+
 		        '<td>'+ pid +'</td>'+
 		        '<td>'+ dorder +'</td>'+
-		        '<td> <button type="button" flag="deptview_" did="'+did+'" dname="'+dname+'" dcode="'+dcode+'" dtype="'+dtype+'" dpid="'+pid+'" dorder="'+dorder+'" class="btn btn-info" data-toggle="modal" data-target="#viewdept"><span>查看</span></button>  	<button type="button" flag="deptmodify_" did="'+did+'" dname="'+dname+'" dcode="'+dcode+'" dtype="'+dtype+'" dpid="'+pid+'" dorder="'+dorder+'" class="btn btn-info"	data-toggle="modal" data-target="#modifydept">	<span>修改</span>	</button></td>' +
+		        '<td><button type="button" flag="deptmodify_" did="'+did+'" dname="'+dname+'" dcode="'+dcode+'" dtype="'+dtype+'" dpid="'+pid+'" dorder="'+dorder+'" class="btn btn-info"	data-toggle="modal" data-target="#modifydept">	<span>修改</span>	</button></td>' +
             	'</tr>';
+//            	 /*<button type="button" flag="deptview_" did="'+did+'" dname="'+dname+'" dcode="'+dcode+'" dtype="'+dtype+'" dpid="'+pid+'" dorder="'+dorder+'" class="btn btn-info" data-toggle="modal" data-target="#viewdept"><span>查看</span></button>  */
             }
             $('#dataList').html(xHtml);
             
             //添加查看事件
-            $("#dataList  button[flag='deptview_']").each(function(){
-            	$(this).click(function(){
-                	$("#view_did").val($(this).attr("did"));
-                	$("#view_dname").val($(this).attr("dname"));
-                	$("#view_dcode").val($(this).attr("dcode"));
-                	$("#view_dtype").val($(this).attr("dtype"));
-                	$("#view_pid").val($(this).attr("pid"));
-                	$("#view_dorder").val($(this).attr("dorder"));
-            	});
-            });
+//            $("#dataList  button[flag='deptview_']").each(function(){
+//            	$(this).click(function(){
+//                	$("#view_did").val($(this).attr("did"));
+//                	$("#view_dname").val($(this).attr("dname"));
+//                	$("#view_dcode").val($(this).attr("dcode"));
+//                	$("#view_dtype").val($(this).attr("dtype"));
+//                	$("#view_pid").val($(this).attr("pid"));
+//                	$("#view_dorder").val($(this).attr("dorder"));
+//            	});
+//            });
             
             //添加修改事件
             $("#dataList  button[flag='deptmodify_']").each(function(){

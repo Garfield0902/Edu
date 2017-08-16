@@ -109,4 +109,30 @@
   	<select id="findRolesId" parameterType="String" resultType="String">
 		select r.id from app_user u, app_role r,app_user_role ur where ur.userid=u.id and ur.roleid=r.id and u.name=#{name}
 	</select>
+	
+	
+	<select id="getAllUserPage" resultMap="BaseResultMap" parameterType="com.edu.vo.UserVo">
+  		select <include refid="Base_Column_List" /> from app_user
+  		where 1=1
+		<if test="name != null">
+	        and name  like '%${name}%'
+	      </if>
+	      <if test="status != null">
+	        and status = #{status,jdbcType=INTEGER}
+	      </if>
+  		limit  #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER} 
+  	</select>
+	
+	<select id="getAllUserPageCount"  parameterType="com.edu.vo.UserVo" resultType="int">
+  		select count(id)  
+      	from app_user
+     	where 1=1
+      	<if test="name != null">
+	       and name  like '%${name}%'
+	    </if>
+	    <if test="status != null">
+	       and status = #{status,jdbcType=INTEGER}
+	    </if>
+  </select>
+  
 </mapper>

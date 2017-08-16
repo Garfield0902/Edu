@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="viewdept" tabindex="-1" role="dialog"
+	<!-- <div class="modal fade" id="viewdept" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
 		<div class="modal-dialog" role="document">
@@ -260,7 +260,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	
 	<div class="modal fade" id="modifydept" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		style="display: none;">
@@ -278,8 +279,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*上级机构：</label>
 							<div class="col-sm-10">
-								<select class="form-control">
-									<option></option>
+								<select class="form-control"  name="pid" >
+									<option value="0">选择机构</option>
+									<c:forEach var="item" items="${departs}">
+	                            		<option value="${item.id }" dcode="${item.dcode }" dtype="${item.dtype }">${item.dname}</option>
+	                            	</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -299,15 +303,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构类型：</label>
 							<div class="col-sm-10">
-								<select class="form-control" id="edit_dtype" name="dtype" >
-									<option></option>
+								<%-- <select class="form-control" id="edit_dtype" name="dtype">
+									<c:forEach var="item" items="${dtypes}">
+	                            		<option value="${item.value }" dtype="${item.type }">${item.key}</option>
+	                            	</c:forEach>
+								</select> --%>
+								<select class="form-control" name="dtype">
+									<c:forEach var="item" items="${dtypes}">
+	                            		<option value="${item.value }" dtype="${item.type }">${item.key}</option>
+	                            	</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">*机构顺序：</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="edit_dorder" name="dorder" placeholder="">
+								<input type="text" class="form-control" id="edit_dorder" name="dorder" value="" placeholder="">
 							</div>
 						</div>
 						<div class="form-group">
