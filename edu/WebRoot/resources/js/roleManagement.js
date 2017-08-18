@@ -55,26 +55,12 @@ var RoleManagement = function(){
 	                enable: true  
 	            }
             };
-        	var zNodes =[
-        	                { name:"父节点1 - 展开", open:true,
-        	                    children: [
-        	                        { name:"父节点11 - 折叠",
-        	                            children: [
-        	                                { name:"叶子节点111"},
-        	                                { name:"叶子节点112"},
-        	                                { name:"叶子节点113"},
-        	                                { name:"叶子节点114"}
-        	                            ]},
-        	                        { name:"父节点12 - 折叠",
-        	                            children: [
-        	                                { name:"叶子节点121"},
-        	                                { name:"叶子节点122"},
-        	                                { name:"叶子节点123"},
-        	                                { name:"叶子节点124"}
-        	                            ]}
-        	                    ]}
-
-        	            ]; 
+        	var zNodes = [
+        	          { id: 1, pId: 0, name: "随意勾选 1"},       
+        	          { id: 2, pId: 0, name: "随意勾选 2"},
+        	          { id: 3, pId: 1-3, name: "随意勾选 3"},
+        	          { id: 4, pId: 3-1, name: "随意勾选 4"},
+        	          ]; 
             $.fn.zTree.init($("#permissionTree"), setting, zNodes);
         });
 
